@@ -16,6 +16,7 @@
             --accent-white: #f5f5f5;
             --pink-accent: #e91e63;
             --pink-light: #f8bbd9;
+            --success: #4caf50;
         }
 
         * {
@@ -153,6 +154,16 @@
             transform: scale(1.05);
         }
 
+        .secondary-button {
+            background-color: transparent;
+            border: 1px solid var(--pink-accent);
+            color: var(--pink-accent);
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+
         /* Daily Quote Section */
         .daily-quote {
             padding: 40px 0;
@@ -259,7 +270,7 @@
 
         .carousel-item {
             flex: 0 0 auto;
-            width: 280px;
+            width: 300px;
             background-color: var(--netflix-dark);
             border-radius: 8px;
             overflow: hidden;
@@ -297,6 +308,26 @@
             font-size: 0.9rem;
             color: #b3b3b3;
             margin-bottom: 15px;
+        }
+
+        .carousel-checkbox {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .carousel-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: var(--pink-accent);
+        }
+
+        .carousel-checkbox label {
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--accent-white);
         }
 
         .status-indicator {
@@ -430,6 +461,8 @@
             padding-left: 15px;
             position: relative;
             font-size: 0.9rem;
+            display: flex;
+            align-items: center;
         }
 
         .day-tasks li:before {
@@ -437,6 +470,14 @@
             color: var(--pink-accent);
             position: absolute;
             left: 0;
+        }
+
+        .task-checkbox {
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--success);
+            cursor: pointer;
         }
 
         /* Water Tracker */
@@ -502,6 +543,76 @@
             color: white;
             font-weight: bold;
             z-index: 1;
+        }
+
+        /* Reset Section */
+        .reset-section {
+            background-color: var(--netflix-dark);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid var(--netflix-gray);
+        }
+
+        .reset-section h3 {
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .reset-section p {
+            color: #b3b3b3;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reset-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .reset-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .reset-all {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .reset-all:hover {
+            background-color: #d32f2f;
+            transform: scale(1.05);
+        }
+
+        .reset-week {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .reset-week:hover {
+            background-color: #f57c00;
+            transform: scale(1.05);
+        }
+
+        .reset-water {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        .reset-water:hover {
+            background-color: #1976d2;
+            transform: scale(1.05);
         }
 
         /* Footer */
@@ -610,6 +721,26 @@
             gap: 30px;
         }
 
+        .exercise-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .exercise-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-checkbox input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--pink-accent);
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             .exercise-details {
                 grid-template-columns: 1fr;
@@ -637,6 +768,16 @@
             .weekly-schedule {
                 grid-template-columns: 1fr;
             }
+            
+            .reset-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .reset-button {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -653,6 +794,7 @@
                 <a href="#tracking">Tracking</a>
                 <a href="#mindset">Mindset</a>
                 <a href="#schedule">Schedule</a>
+                <a href="#reset">Reset Data</a>
             </div>
             <div class="user-profile">
                 <div class="profile-img">Y</div>
@@ -665,9 +807,12 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Your Journey to a Feminine & Healthy Figure</h1>
-                <p>Track workouts, monitor nutrition, and cultivate grace with this complete wellness tracker designed for the modern woman.</p>
+                <p>Track workouts, monitor nutrition, and cultivate grace with this complete wellness tracker. Check off each achievement as you progress!</p>
                 <button class="cta-button" id="start-journey-btn">
                     <i class="fas fa-play-circle"></i> Begin Your Journey
+                </button>
+                <button class="cta-button secondary-button" id="reset-today-btn" style="margin-left: 15px;">
+                    <i class="fas fa-redo"></i> Reset Today's Data
                 </button>
             </div>
         </div>
@@ -703,8 +848,8 @@
                         <div class="stat-label">Completed</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value" id="workouts-total">5</div>
-                        <div class="stat-label">This Week</div>
+                        <div class="stat-value" id="workouts-total">8</div>
+                        <div class="stat-label">Total</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value" id="workout-streak">5</div>
@@ -741,8 +886,8 @@
                 </div>
                 <div class="stats">
                     <div class="stat">
-                        <div class="stat-value">7.5</div>
-                        <div class="stat-label">Sleep (hrs)</div>
+                        <div class="stat-value" id="tasks-completed">5</div>
+                        <div class="stat-label">Tasks Done</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value">21</div>
@@ -770,7 +915,7 @@
             </div>
         </section>
 
-        <!-- Weekly Schedule -->
+        <!-- Weekly Schedule with Checkboxes -->
         <section id="schedule">
             <div class="section-header">
                 <h2><i class="fas fa-calendar-alt"></i> Weekly Schedule</h2>
@@ -803,12 +948,12 @@
                 </div>
                 
                 <button class="refresh-quote" id="reset-water-btn">
-                    <i class="fas fa-redo"></i> Reset for Tomorrow
+                    <i class="fas fa-redo"></i> Reset Water
                 </button>
             </div>
         </section>
 
-        <!-- Nutrition Carousel -->
+        <!-- Nutrition Carousel with Checkboxes -->
         <section id="nutrition">
             <div class="section-header">
                 <h2><i class="fas fa-utensils"></i> Daily Nutrition Plan</h2>
@@ -820,6 +965,24 @@
                     <!-- Nutrition items will be populated by JavaScript -->
                 </div>
             </div>
+        </section>
+
+        <!-- Reset Data Section -->
+        <section id="reset" class="reset-section">
+            <h3><i class="fas fa-eraser"></i> Data Management</h3>
+            <p>Reset your tracking data. Be careful - this action cannot be undone!</p>
+            <div class="reset-buttons">
+                <button class="reset-button reset-all" id="reset-all-data">
+                    <i class="fas fa-bomb"></i> Reset All Data to Zero
+                </button>
+                <button class="reset-button reset-week" id="reset-week-data">
+                    <i class="fas fa-calendar-times"></i> Reset This Week
+                </button>
+                <button class="reset-button reset-water" id="reset-water-data">
+                    <i class="fas fa-tint-slash"></i> Reset Water Only
+                </button>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">Note: Daily quotes and workout descriptions will remain.</p>
         </section>
     </main>
 
@@ -878,9 +1041,12 @@
                         <h3>Focus Areas</h3>
                         <p id="modal-exercise-focus">Glutes, hamstrings, core</p>
                         
-                        <button class="cta-button" id="mark-complete-btn">
-                            <i class="fas fa-check-circle"></i> Mark as Complete
-                        </button>
+                        <div class="exercise-checkboxes">
+                            <h4>Track Your Sets:</h4>
+                            <div id="sets-tracker">
+                                <!-- Set checkboxes will be added by JavaScript -->
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <h3>Form Tips</h3>
@@ -897,10 +1063,9 @@
                         </div>
                         <p id="modal-exercise-status">Not started today</p>
                         
-                        <h3>Track Your Sets</h3>
-                        <div id="sets-tracker">
-                            <!-- Set checkboxes will be added by JavaScript -->
-                        </div>
+                        <button class="cta-button" id="mark-complete-btn" style="width: 100%; margin-top: 20px;">
+                            <i class="fas fa-check-circle"></i> Mark All Sets Complete
+                        </button>
                     </div>
                 </div>
             </div>
@@ -918,8 +1083,9 @@
                 sets: 3,
                 focus: "Glutes, Hamstrings",
                 icon: "fas fa-arrow-up",
-                completed: true,
-                progress: 100
+                completed: false,
+                progress: 0,
+                checked: false
             },
             {
                 id: 2,
@@ -929,8 +1095,9 @@
                 sets: 3,
                 focus: "Thighs, Glutes",
                 icon: "fas fa-people-arrows",
-                completed: true,
-                progress: 100
+                completed: false,
+                progress: 0,
+                checked: false
             },
             {
                 id: 3,
@@ -941,7 +1108,8 @@
                 focus: "Hips, Outer Thighs",
                 icon: "fas fa-arrow-alt-circle-left",
                 completed: false,
-                progress: 33
+                progress: 0,
+                checked: false
             },
             {
                 id: 4,
@@ -952,7 +1120,8 @@
                 focus: "Glutes",
                 icon: "fas fa-horse",
                 completed: false,
-                progress: 0
+                progress: 0,
+                checked: false
             },
             {
                 id: 5,
@@ -963,7 +1132,8 @@
                 focus: "Legs, Calves",
                 icon: "fas fa-shoe-prints",
                 completed: false,
-                progress: 0
+                progress: 0,
+                checked: false
             },
             {
                 id: 6,
@@ -974,7 +1144,8 @@
                 focus: "Glutes, Hips",
                 icon: "fas fa-fire",
                 completed: false,
-                progress: 0
+                progress: 0,
+                checked: false
             },
             {
                 id: 7,
@@ -985,7 +1156,8 @@
                 focus: "Legs, Balance",
                 icon: "fas fa-retweet",
                 completed: false,
-                progress: 0
+                progress: 0,
+                checked: false
             },
             {
                 id: 8,
@@ -996,7 +1168,8 @@
                 focus: "Obliques, Core",
                 icon: "fas fa-balance-scale-left",
                 completed: false,
-                progress: 0
+                progress: 0,
+                checked: false
             }
         ];
 
@@ -1007,7 +1180,8 @@
                 time: "8-9 AM",
                 description: "Eggs + sweet potato or Oats with fruit",
                 icon: "fas fa-egg",
-                completed: true
+                completed: false,
+                checked: false
             },
             {
                 id: 2,
@@ -1015,7 +1189,8 @@
                 time: "10-11 AM",
                 description: "Fruit or roasted groundnuts",
                 icon: "fas fa-apple-alt",
-                completed: true
+                completed: false,
+                checked: false
             },
             {
                 id: 3,
@@ -1023,7 +1198,8 @@
                 time: "1-2 PM",
                 description: "Protein + complex carb + 2 veggie servings",
                 icon: "fas fa-utensils",
-                completed: true
+                completed: false,
+                checked: false
             },
             {
                 id: 4,
@@ -1031,7 +1207,8 @@
                 time: "4-5 PM",
                 description: "Yogurt or hard-boiled egg",
                 icon: "fas fa-seedling",
-                completed: false
+                completed: false,
+                checked: false
             },
             {
                 id: 5,
@@ -1039,7 +1216,8 @@
                 time: "7-8 PM",
                 description: "Light meal: Grilled protein + salad",
                 icon: "fas fa-moon",
-                completed: false
+                completed: false,
+                checked: false
             },
             {
                 id: 6,
@@ -1047,7 +1225,8 @@
                 time: "All Day",
                 description: "1.5-2L water with lemon/mint",
                 icon: "fas fa-tint",
-                completed: false
+                completed: false,
+                checked: false
             }
         ];
 
@@ -1055,43 +1234,71 @@
             {
                 day: "Monday",
                 date: "Today",
-                tasks: ["Workout A", "10 min stretching", "30 min walk"],
+                tasks: [
+                    { name: "Workout A", checked: false },
+                    { name: "10 min stretching", checked: false },
+                    { name: "30 min walk", checked: false }
+                ],
                 current: true
             },
             {
                 day: "Tuesday",
                 date: "Tomorrow",
-                tasks: ["30 min brisk walk", "Posture exercises", "Self-care ritual"],
+                tasks: [
+                    { name: "30 min brisk walk", checked: false },
+                    { name: "Posture exercises", checked: false },
+                    { name: "Self-care ritual", checked: false }
+                ],
                 current: false
             },
             {
                 day: "Wednesday",
                 date: "Aug 16",
-                tasks: ["Workout B", "Waist exercises", "Dance session"],
+                tasks: [
+                    { name: "Workout B", checked: false },
+                    { name: "Waist exercises", checked: false },
+                    { name: "Dance session", checked: false }
+                ],
                 current: false
             },
             {
                 day: "Thursday",
                 date: "Aug 17",
-                tasks: ["Active rest", "Gentle stretching", "Skin care"],
+                tasks: [
+                    { name: "Active rest", checked: false },
+                    { name: "Gentle stretching", checked: false },
+                    { name: "Skin care", checked: false }
+                ],
                 current: false
             },
             {
                 day: "Friday",
                 date: "Aug 18",
-                tasks: ["Workout A", "10 min core", "Posture practice"],
+                tasks: [
+                    { name: "Workout A", checked: false },
+                    { name: "10 min core", checked: false },
+                    { name: "Posture practice", checked: false }
+                ],
                 current: false
             },
             {
                 day: "Saturday",
                 date: "Aug 19",
-                tasks: ["Walking or dancing", "Flexible nutrition", "Social activity"],
+                tasks: [
+                    { name: "Walking or dancing", checked: false },
+                    { name: "Flexible nutrition", checked: false },
+                    { name: "Social activity", checked: false }
+                ],
                 current: false
             },
             {
                 day: "Sunday",
                 date: "Aug 20",
-                tasks: ["Rest day", "Meal prep", "Next week planning"],
+                tasks: [
+                    { name: "Rest day", checked: false },
+                    { name: "Meal prep", checked: false },
+                    { name: "Next week planning", checked: false }
+                ],
                 current: false
             }
         ];
@@ -1140,22 +1347,16 @@
         const quoteAuthor = document.getElementById('quote-author');
         const exerciseModal = document.getElementById('exercise-modal');
         const closeModalBtn = document.getElementById('close-modal-btn');
-        const refreshQuoteBtn = document.getElementById('refresh-quote-btn');
-        const startJourneyBtn = document.getElementById('start-journey-btn');
-        const resetWaterBtn = document.getElementById('reset-water-btn');
-        const workoutProgress = document.getElementById('workout-progress');
-        const workoutsDone = document.getElementById('workouts-done');
-        const waterCount = document.getElementById('water-count');
-        const waterGlassesStat = document.getElementById('water-glasses');
 
         // Current state
         let currentQuoteIndex = 0;
-        let waterIntake = 5;
-        let completedWorkouts = workoutData.filter(w => w.completed).length;
+        let waterIntake = 0;
         let selectedExercise = null;
+        let completedTasksCount = 0;
 
         // Initialize the application
         function init() {
+            loadFromLocalStorage();
             renderWorkoutCarousel();
             renderNutritionCarousel();
             renderWeeklySchedule();
@@ -1174,7 +1375,7 @@
             });
         }
 
-        // Render workout carousel
+        // Render workout carousel with checkboxes
         function renderWorkoutCarousel() {
             workoutCarousel.innerHTML = '';
             
@@ -1201,15 +1402,37 @@
                             <div class="progress-fill" style="width: ${workout.progress}%"></div>
                         </div>
                         <p>${workout.reps} • ${workout.sets} sets</p>
+                        <div class="carousel-checkbox">
+                            <input type="checkbox" id="workout-${workout.id}" ${workout.checked ? 'checked' : ''}>
+                            <label for="workout-${workout.id}">Mark as completed</label>
+                        </div>
                     </div>
                 `;
                 
-                workoutElement.addEventListener('click', () => openExerciseModal(workout));
+                // Add click event for opening modal
+                workoutElement.addEventListener('click', (e) => {
+                    // Don't open modal if checkbox was clicked
+                    if (!e.target.closest('.carousel-checkbox')) {
+                        openExerciseModal(workout);
+                    }
+                });
+                
+                // Add checkbox event
+                const checkbox = workoutElement.querySelector(`#workout-${workout.id}`);
+                checkbox.addEventListener('change', (e) => {
+                    e.stopPropagation(); // Prevent modal from opening
+                    workout.checked = checkbox.checked;
+                    workout.completed = checkbox.checked;
+                    workout.progress = checkbox.checked ? 100 : 0;
+                    updateDashboardStats();
+                    saveToLocalStorage();
+                });
+                
                 workoutCarousel.appendChild(workoutElement);
             });
         }
 
-        // Render nutrition carousel
+        // Render nutrition carousel with checkboxes
         function renderNutritionCarousel() {
             nutritionCarousel.innerHTML = '';
             
@@ -1231,14 +1454,27 @@
                             <span class="status-indicator ${statusClass}"></span>
                             <span>${statusText}</span>
                         </div>
+                        <div class="carousel-checkbox">
+                            <input type="checkbox" id="meal-${meal.id}" ${meal.checked ? 'checked' : ''}>
+                            <label for="meal-${meal.id}">Mark as eaten</label>
+                        </div>
                     </div>
                 `;
+                
+                // Add checkbox event
+                const checkbox = mealElement.querySelector(`#meal-${meal.id}`);
+                checkbox.addEventListener('change', () => {
+                    meal.checked = checkbox.checked;
+                    meal.completed = checkbox.checked;
+                    updateDashboardStats();
+                    saveToLocalStorage();
+                });
                 
                 nutritionCarousel.appendChild(mealElement);
             });
         }
 
-        // Render weekly schedule
+        // Render weekly schedule with checkboxes
         function renderWeeklySchedule() {
             weeklyScheduleContainer.innerHTML = '';
             
@@ -1247,8 +1483,15 @@
                 dayElement.className = `day-card ${day.current ? 'current-day' : ''}`;
                 
                 let tasksHTML = '';
-                day.tasks.forEach(task => {
-                    tasksHTML += `<li>${task}</li>`;
+                day.tasks.forEach((task, index) => {
+                    tasksHTML += `
+                        <li>
+                            ${task.name}
+                            <input type="checkbox" class="task-checkbox" 
+                                   id="${day.day.toLowerCase()}-task-${index}" 
+                                   ${task.checked ? 'checked' : ''}>
+                        </li>
+                    `;
                 });
                 
                 dayElement.innerHTML = `
@@ -1260,6 +1503,16 @@
                         ${tasksHTML}
                     </ul>
                 `;
+                
+                // Add checkbox events
+                day.tasks.forEach((task, index) => {
+                    const checkbox = dayElement.querySelector(`#${day.day.toLowerCase()}-task-${index}`);
+                    checkbox.addEventListener('change', () => {
+                        task.checked = checkbox.checked;
+                        updateDashboardStats();
+                        saveToLocalStorage();
+                    });
+                });
                 
                 weeklyScheduleContainer.appendChild(dayElement);
             });
@@ -1294,22 +1547,38 @@
         // Update dashboard statistics
         function updateDashboardStats() {
             // Update workout stats
-            completedWorkouts = workoutData.filter(w => w.completed).length;
+            const completedWorkouts = workoutData.filter(w => w.checked).length;
             const totalWorkouts = workoutData.length;
             const workoutPercentage = Math.round((completedWorkouts / totalWorkouts) * 100);
             
-            workoutProgress.style.width = `${workoutPercentage}%`;
-            workoutsDone.textContent = completedWorkouts;
+            document.getElementById('workout-progress').style.width = `${workoutPercentage}%`;
+            document.getElementById('workouts-done').textContent = completedWorkouts;
+            document.getElementById('workouts-total').textContent = totalWorkouts;
             
             // Update water stats
-            waterCount.textContent = waterIntake;
-            waterGlassesStat.textContent = waterIntake;
+            document.getElementById('water-count').textContent = waterIntake;
+            document.getElementById('water-glasses').textContent = waterIntake;
             
             // Update nutrition progress
-            const completedMeals = nutritionData.filter(m => m.completed).length;
+            const completedMeals = nutritionData.filter(m => m.checked).length;
             const nutritionPercentage = Math.round((completedMeals / nutritionData.length) * 100);
             document.getElementById('nutrition-progress').style.width = `${nutritionPercentage}%`;
             document.getElementById('meals-tracked').textContent = completedMeals;
+            
+            // Update completed tasks count
+            completedTasksCount = 0;
+            weeklySchedule.forEach(day => {
+                day.tasks.forEach(task => {
+                    if (task.checked) completedTasksCount++;
+                });
+            });
+            
+            document.getElementById('tasks-completed').textContent = completedTasksCount;
+            
+            // Update wellness progress
+            const totalTasks = weeklySchedule.reduce((sum, day) => sum + day.tasks.length, 0);
+            const wellnessPercentage = Math.round((completedTasksCount / totalTasks) * 100);
+            document.getElementById('wellness-progress').style.width = `${wellnessPercentage}%`;
         }
 
         // Set a random motivational quote
@@ -1358,15 +1627,12 @@
                 const setCompleted = i <= (exercise.progress / 100) * exercise.sets;
                 
                 const setDiv = document.createElement('div');
-                setDiv.style.marginBottom = '10px';
-                setDiv.style.display = 'flex';
-                setDiv.style.alignItems = 'center';
+                setDiv.className = 'exercise-checkbox';
                 
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.id = `set-${i}`;
                 checkbox.checked = setCompleted;
-                checkbox.style.marginRight = '10px';
                 
                 checkbox.addEventListener('change', () => {
                     updateExerciseProgress(exercise, i, checkbox.checked);
@@ -1375,7 +1641,6 @@
                 const label = document.createElement('label');
                 label.htmlFor = `set-${i}`;
                 label.textContent = `Set ${i}: ${exercise.reps}`;
-                label.style.color = 'var(--white)';
                 
                 setDiv.appendChild(checkbox);
                 setDiv.appendChild(label);
@@ -1401,6 +1666,7 @@
                 const newProgress = Math.round((checkedSets / exercise.sets) * 100);
                 workoutData[exerciseIndex].progress = newProgress;
                 workoutData[exerciseIndex].completed = newProgress === 100;
+                workoutData[exerciseIndex].checked = newProgress === 100;
                 
                 // Update modal display
                 document.getElementById('modal-exercise-progress').style.width = `${newProgress}%`;
@@ -1411,6 +1677,7 @@
                 // Update carousel and dashboard
                 renderWorkoutCarousel();
                 updateDashboardStats();
+                saveToLocalStorage();
             }
         }
 
@@ -1418,10 +1685,154 @@
         function updateWaterTracker() {
             renderWaterGlasses();
             updateDashboardStats();
-            
-            // Save to localStorage
-            localStorage.setItem('waterIntake', waterIntake);
-            localStorage.setItem('waterDate', new Date().toDateString());
+            saveToLocalStorage();
+        }
+
+        // Reset all data to zero
+        function resetAllData() {
+            if (confirm("Are you sure you want to reset ALL data to zero? This cannot be undone.")) {
+                // Reset workout data
+                workoutData.forEach(workout => {
+                    workout.completed = false;
+                    workout.progress = 0;
+                    workout.checked = false;
+                });
+                
+                // Reset nutrition data
+                nutritionData.forEach(meal => {
+                    meal.completed = false;
+                    meal.checked = false;
+                });
+                
+                // Reset weekly schedule
+                weeklySchedule.forEach(day => {
+                    day.tasks.forEach(task => {
+                        task.checked = false;
+                    });
+                });
+                
+                // Reset water intake
+                waterIntake = 0;
+                
+                // Reset date for water tracking
+                localStorage.removeItem('lastWaterResetDate');
+                
+                // Re-render everything
+                renderWorkoutCarousel();
+                renderNutritionCarousel();
+                renderWeeklySchedule();
+                renderWaterGlasses();
+                updateDashboardStats();
+                saveToLocalStorage();
+                
+                alert("All data has been reset to zero!");
+            }
+        }
+
+        // Reset this week's data
+        function resetWeekData() {
+            if (confirm("Reset all data for this week? Workout, nutrition, and task checkboxes will be cleared.")) {
+                // Reset workout data
+                workoutData.forEach(workout => {
+                    workout.completed = false;
+                    workout.progress = 0;
+                    workout.checked = false;
+                });
+                
+                // Reset nutrition data
+                nutritionData.forEach(meal => {
+                    meal.completed = false;
+                    meal.checked = false;
+                });
+                
+                // Reset weekly schedule
+                weeklySchedule.forEach(day => {
+                    day.tasks.forEach(task => {
+                        task.checked = false;
+                    });
+                });
+                
+                // Re-render everything
+                renderWorkoutCarousel();
+                renderNutritionCarousel();
+                renderWeeklySchedule();
+                updateDashboardStats();
+                saveToLocalStorage();
+                
+                alert("This week's data has been reset!");
+            }
+        }
+
+        // Reset today's data only
+        function resetTodayData() {
+            if (confirm("Reset today's data only? Water intake will be cleared, but weekly checkboxes remain.")) {
+                waterIntake = 0;
+                updateWaterTracker();
+                alert("Today's data has been reset!");
+            }
+        }
+
+        // Save data to localStorage
+        function saveToLocalStorage() {
+            const data = {
+                workoutData,
+                nutritionData,
+                weeklySchedule,
+                waterIntake,
+                lastSaved: new Date().toISOString()
+            };
+            localStorage.setItem('feminineWellnessData', JSON.stringify(data));
+        }
+
+        // Load data from localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('feminineWellnessData');
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    
+                    // Update workout data
+                    if (data.workoutData) {
+                        data.workoutData.forEach((savedWorkout, index) => {
+                            if (workoutData[index]) {
+                                workoutData[index].completed = savedWorkout.completed || false;
+                                workoutData[index].progress = savedWorkout.progress || 0;
+                                workoutData[index].checked = savedWorkout.checked || false;
+                            }
+                        });
+                    }
+                    
+                    // Update nutrition data
+                    if (data.nutritionData) {
+                        data.nutritionData.forEach((savedMeal, index) => {
+                            if (nutritionData[index]) {
+                                nutritionData[index].completed = savedMeal.completed || false;
+                                nutritionData[index].checked = savedMeal.checked || false;
+                            }
+                        });
+                    }
+                    
+                    // Update weekly schedule
+                    if (data.weeklySchedule) {
+                        data.weeklySchedule.forEach((savedDay, dayIndex) => {
+                            if (weeklySchedule[dayIndex] && savedDay.tasks) {
+                                savedDay.tasks.forEach((savedTask, taskIndex) => {
+                                    if (weeklySchedule[dayIndex].tasks[taskIndex]) {
+                                        weeklySchedule[dayIndex].tasks[taskIndex].checked = savedTask.checked || false;
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    
+                    // Update water intake
+                    if (data.waterIntake !== undefined) {
+                        waterIntake = data.waterIntake;
+                    }
+                } catch (e) {
+                    console.error("Error loading saved data:", e);
+                }
+            }
         }
 
         // Setup event listeners
@@ -1439,7 +1850,7 @@
             });
             
             // Refresh quote button
-            refreshQuoteBtn.addEventListener('click', () => {
+            document.getElementById('refresh-quote-btn').addEventListener('click', () => {
                 let newIndex;
                 do {
                     newIndex = Math.floor(Math.random() * motivationalQuotes.length);
@@ -1451,35 +1862,31 @@
             });
             
             // Start journey button
-            startJourneyBtn.addEventListener('click', () => {
+            document.getElementById('start-journey-btn').addEventListener('click', () => {
                 alert('Welcome to your feminine wellness journey! Your tracking dashboard is now active. Remember: progress over perfection!');
-                
-                // Mark first workout as in progress if not started
-                if (workoutData[0].progress === 0) {
-                    workoutData[0].progress = 33;
-                    renderWorkoutCarousel();
-                    updateDashboardStats();
-                }
             });
             
             // Reset water button
-            resetWaterBtn.addEventListener('click', () => {
-                if (confirm("Reset water intake for tomorrow? Today's progress will be saved.")) {
-                    // In a real app, you would save today's data
-                    waterIntake = 0;
-                    updateWaterTracker();
-                }
+            document.getElementById('reset-water-btn').addEventListener('click', () => {
+                waterIntake = 0;
+                updateWaterTracker();
             });
             
-            // Header scroll effect
-            window.addEventListener('scroll', () => {
-                const header = document.getElementById('main-header');
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+            // Reset all data button
+            document.getElementById('reset-all-data').addEventListener('click', resetAllData);
+            
+            // Reset week data button
+            document.getElementById('reset-week-data').addEventListener('click', resetWeekData);
+            
+            // Reset water only button
+            document.getElementById('reset-water-data').addEventListener('click', () => {
+                waterIntake = 0;
+                updateWaterTracker();
+                alert("Water intake has been reset!");
             });
+            
+            // Reset today's data button
+            document.getElementById('reset-today-btn').addEventListener('click', resetTodayData);
             
             // Mark as complete button in modal
             document.getElementById('mark-complete-btn').addEventListener('click', () => {
@@ -1488,6 +1895,7 @@
                     if (exerciseIndex !== -1) {
                         workoutData[exerciseIndex].progress = 100;
                         workoutData[exerciseIndex].completed = true;
+                        workoutData[exerciseIndex].checked = true;
                         
                         // Update all sets checkboxes
                         const checkboxes = document.querySelectorAll('#sets-tracker input[type="checkbox"]');
@@ -1502,18 +1910,20 @@
                         // Update carousel and dashboard
                         renderWorkoutCarousel();
                         updateDashboardStats();
+                        saveToLocalStorage();
                     }
                 }
             });
             
-            // Load saved water intake from localStorage
-            const savedWater = localStorage.getItem('waterIntake');
-            const savedDate = localStorage.getItem('waterDate');
-            const today = new Date().toDateString();
-            
-            if (savedWater && savedDate === today) {
-                waterIntake = parseInt(savedWater);
-            }
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('main-header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
         }
 
         // Initialize the app when DOM is loaded
