@@ -6,6 +6,7 @@
     <title>Wellness Tracker | Your Journey to Grace</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ALL CSS REMAINS EXACTLY THE SAME - NO CHANGES */
         :root {
             --primary: #e50914;
             --netflix-black: #141414;
@@ -1965,65 +1966,65 @@
     </div>
 
     <script>
-        // DATA FOR DAILY MEAL PLANS
+        // DATA FOR DAILY MEAL PLANS - COMPLETELY KENYAN, NO FISH
         const mealPlans = {
             mediterranean: {
                 name: "Mediterranean",
-                description: "Fresh vegetables, lean proteins, and healthy fats",
-                icon: "fas fa-fish",
+                description: "Fresh vegetables, beans, and healthy Kenyan fats",
+                icon: "fas fa-leaf",
                 color: "#4CAF50",
                 tagClass: "tag-mediterranean",
                 meals: [
                     {
                         id: 1,
-                        title: "Greek Yogurt Bowl",
+                        title: "Maziwa Lala Bowl",
                         time: "8-9 AM",
-                        description: "Greek yogurt with honey, nuts, and fresh berries",
+                        description: "Fermented milk with honey, groundnuts, and mango",
                         icon: "fas fa-bowl-food",
                         calories: "320 cal",
                         nutrients: "High in protein & probiotics"
                     },
                     {
                         id: 2,
-                        title: "Hummus & Veggies",
+                        title: "Veggies & Nduma",
                         time: "10-11 AM",
-                        description: "Fresh vegetables with homemade hummus",
+                        description: "Fresh cucumber, carrot & tomato with arrowroots",
                         icon: "fas fa-carrot",
                         calories: "180 cal",
-                        nutrients: "Fiber & healthy fats"
+                        nutrients: "Fiber & healthy carbs"
                     },
                     {
                         id: 3,
-                        title: "Mediterranean Salad",
+                        title: "Kenyan Bean Salad",
                         time: "1-2 PM",
-                        description: "Quinoa, chickpeas, tomatoes, cucumber, feta cheese",
+                        description: "Boiled beans with avocado, tomato & onion salad",
                         icon: "fas fa-leaf",
                         calories: "420 cal",
                         nutrients: "Complete protein & vitamins"
                     },
                     {
                         id: 4,
-                        title: "Olives & Almonds",
+                        title: "Groundnuts Snack",
                         time: "4-5 PM",
-                        description: "Mixed olives and a handful of almonds",
+                        description: "A handful of roasted groundnuts (peanuts)",
                         icon: "fas fa-seedling",
                         calories: "200 cal",
-                        nutrients: "Healthy fats & antioxidants"
+                        nutrients: "Healthy fats & protein"
                     },
                     {
                         id: 5,
-                        title: "Grilled Salmon",
+                        title: "Chicken Sukuma",
                         time: "7-8 PM",
-                        description: "Salmon with roasted vegetables and lemon",
-                        icon: "fas fa-fish",
+                        description: "Grilled chicken with Sukuma Wiki and Ugali",
+                        icon: "fas fa-drumstick-bite",
                         calories: "450 cal",
-                        nutrients: "Omega-3 & protein"
+                        nutrients: "Lean protein & greens"
                     },
                     {
                         id: 6,
-                        title: "Herbal Infusion",
+                        title: "Ginger Tea",
                         time: "Evening",
-                        description: "Mint or chamomile tea with lemon",
+                        description: "Kenyan ginger tea (Tangawizi) with lemon",
                         icon: "fas fa-mug-hot",
                         calories: "5 cal",
                         nutrients: "Hydration & digestion"
@@ -2032,124 +2033,124 @@
             },
             highProtein: {
                 name: "High-Protein",
-                description: "Lean proteins for muscle recovery and energy",
+                description: "Local proteins for muscle recovery and energy",
                 icon: "fas fa-dumbbell",
                 color: "#2196F3",
                 tagClass: "tag-high-protein",
                 meals: [
                     {
                         id: 1,
-                        title: "Protein Pancakes",
+                        title: "Mahamri & Eggs",
                         time: "8-9 AM",
-                        description: "Protein powder pancakes with berries",
-                        icon: "fas fa-pancakes",
+                        description: "Swahili donut with boiled egg and Kenyan tea",
+                        icon: "fas fa-egg",
                         calories: "350 cal",
-                        nutrients: "35g protein"
+                        nutrients: "25g protein"
                     },
                     {
                         id: 2,
                         title: "Hard-Boiled Eggs",
                         time: "10-11 AM",
-                        description: "2 hard-boiled eggs with sea salt",
+                        description: "2 hard-boiled eggs with a pinch of salt",
                         icon: "fas fa-egg",
                         calories: "140 cal",
                         nutrients: "12g protein"
                     },
                     {
                         id: 3,
-                        title: "Chicken & Quinoa",
+                        title: "Githeri Extra",
                         time: "1-2 PM",
-                        description: "Grilled chicken breast with quinoa and broccoli",
-                        icon: "fas fa-drumstick-bite",
+                        description: "Maize and beans with extra beans for protein",
+                        icon: "fas fa-bowl-rice",
                         calories: "480 cal",
-                        nutrients: "45g protein"
+                        nutrients: "35g plant protein"
                     },
                     {
                         id: 4,
-                        title: "Cottage Cheese",
+                        title: "Maziwa Lala",
                         time: "4-5 PM",
-                        description: "Cottage cheese with pineapple",
-                        icon: "fas fa-cheese",
+                        description: "Plain fermented milk (1 glass)",
+                        icon: "fas fa-blender",
                         calories: "180 cal",
-                        nutrients: "20g protein"
+                        nutrients: "15g protein"
                     },
                     {
                         id: 5,
-                        title: "Lean Beef Stir-fry",
+                        title: "Beef Stew",
                         time: "7-8 PM",
-                        description: "Lean beef with mixed vegetables",
+                        description: "Lean beef stew with spinach and rice",
                         icon: "fas fa-utensils",
                         calories: "420 cal",
-                        nutrients: "40g protein"
+                        nutrients: "35g protein"
                     },
                     {
                         id: 6,
-                        title: "Casein Shake",
+                        title: "Warm Milk",
                         time: "Before bed",
-                        description: "Casein protein shake",
-                        icon: "fas fa-blender",
+                        description: "Cup of warm milk with cinnamon",
+                        icon: "fas fa-mug-hot",
                         calories: "120 cal",
-                        nutrients: "25g slow-digesting protein"
+                        nutrients: "8g protein"
                     }
                 ]
             },
             vegetarian: {
                 name: "Vegetarian",
-                description: "Plant-based proteins and whole grains",
+                description: "Plant-based proteins and local grains",
                 icon: "fas fa-leaf",
                 color: "#9C27B0",
                 tagClass: "tag-vegetarian",
                 meals: [
                     {
                         id: 1,
-                        title: "Tofu Scramble",
+                        title: "Uji Power",
                         time: "8-9 AM",
-                        description: "Tofu scramble with spinach and mushrooms",
-                        icon: "fas fa-egg",
+                        description: "Fermented porridge (millet/sorghum) with milk",
+                        icon: "fas fa-bowl-food",
                         calories: "280 cal",
-                        nutrients: "20g plant protein"
+                        nutrients: "18g plant protein"
                     },
                     {
                         id: 2,
-                        title: "Apple & Nut Butter",
+                        title: "Banana & Groundnuts",
                         time: "10-11 AM",
-                        description: "Apple slices with almond butter",
+                        description: "Banana with groundnut paste",
                         icon: "fas fa-apple-alt",
                         calories: "220 cal",
                         nutrients: "Healthy fats & fiber"
                     },
                     {
                         id: 3,
-                        title: "Lentil Curry",
+                        title: "Lentil Mbazi",
                         time: "1-2 PM",
-                        description: "Red lentil curry with brown rice",
+                        description: "Lentil curry with chapati or rice",
                         icon: "fas fa-bowl-rice",
                         calories: "420 cal",
                         nutrients: "25g protein & fiber"
                     },
                     {
                         id: 4,
-                        title: "Edamame",
+                        title: "Roasted Maize",
                         time: "4-5 PM",
-                        description: "Steamed edamame with sea salt",
+                        description: "Fresh roasted maize (mahindi)",
                         icon: "fas fa-seedling",
                         calories: "160 cal",
-                        nutrients: "15g protein"
+                        nutrients: "Complex carbs"
                     },
                     {
                         id: 5,
-                        title: "Chickpea Buddha Bowl",
+                        title: "Green Grams Bowl",
                         time: "7-8 PM",
-                        description: "Roasted chickpeas with quinoa and tahini",
+                        description: "Boiled green grams with cabbage and Ugali",
                         icon: "fas fa-bowl-food",
                         calories: "380 cal",
                         nutrients: "Complete protein"
                     },
                     {
                         id: 6,
-                        title: "Golden Milk",
+                        title: "Turmeric Milk",
                         time: "Evening",
-                        description: "Turmeric milk with cinnamon",
+                        description: "Milk with turmeric and cinnamon",
                         icon: "fas fa-mug-hot",
                         calories: "90 cal",
                         nutrients: "Anti-inflammatory"
@@ -2158,64 +2159,64 @@
             },
             balanced: {
                 name: "Balanced",
-                description: "Well-rounded meals for optimal nutrition",
+                description: "Well-rounded meals with local ingredients",
                 icon: "fas fa-balance-scale",
                 color: "#FF9800",
                 tagClass: "tag-balanced",
                 meals: [
                     {
                         id: 1,
-                        title: "Oatmeal Combo",
+                        title: "Porridge Combo",
                         time: "8-9 AM",
-                        description: "Oats with banana, nuts, and a dash of cinnamon",
+                        description: "Uji with milk, banana, and groundnuts",
                         icon: "fas fa-bowl-food",
                         calories: "320 cal",
-                        nutrients: "Complex carbs & fiber"
+                        nutrients: "Complex carbs & protein"
                     },
                     {
                         id: 2,
-                        title: "Greek Yogurt",
+                        title: "Maziwa Lala",
                         time: "10-11 AM",
-                        description: "Greek yogurt with chia seeds",
+                        description: "Fermented milk with chia seeds",
                         icon: "fas fa-blender",
                         calories: "150 cal",
                         nutrients: "Protein & probiotics"
                     },
                     {
                         id: 3,
-                        title: "Turkey Wrap",
+                        title: "Chapati Wrap",
                         time: "1-2 PM",
-                        description: "Whole wheat wrap with turkey and veggies",
+                        description: "Chapati with avocado and tomato salad",
                         icon: "fas fa-bread-slice",
                         calories: "380 cal",
-                        nutrients: "Lean protein & fiber"
+                        nutrients: "Healthy carbs & fats"
                     },
                     {
                         id: 4,
-                        title: "Protein Bar",
+                        title: "Roasted Njugu",
                         time: "4-5 PM",
-                        description: "Natural protein bar (low sugar)",
+                        description: "Roasted groundnuts (handful)",
                         icon: "fas fa-candy-bar",
                         calories: "200 cal",
-                        nutrients: "15g protein"
+                        nutrients: "Protein & healthy fats"
                     },
                     {
                         id: 5,
-                        title: "Baked Salmon",
+                        title: "Chicken Manag",
                         time: "7-8 PM",
-                        description: "Salmon with sweet potato and asparagus",
-                        icon: "fas fa-fish",
+                        description: "Chicken with sweet potato and managu",
+                        icon: "fas fa-drumstick-bite",
                         calories: "450 cal",
-                        nutrients: "Omega-3 & vitamins"
+                        nutrients: "Protein & vitamins"
                     },
                     {
                         id: 6,
-                        title: "Herbal Tea",
+                        title: "Hibiscus Tea",
                         time: "Evening",
-                        description: "Peppermint or ginger tea",
+                        description: "Zobo (hibiscus tea) without sugar",
                         icon: "fas fa-mug-hot",
                         calories: "5 cal",
-                        nutrients: "Hydration & digestion"
+                        nutrients: "Antioxidants & hydration"
                     }
                 ]
             }
