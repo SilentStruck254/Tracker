@@ -17,6 +17,7 @@
             --pink-accent: #e91e63;
             --pink-light: #f8bbd9;
             --success: #4caf50;
+            --calendar-green: #2e7d32;
         }
 
         * {
@@ -215,32 +216,328 @@
             color: white;
         }
 
-        /* Section Headers */
-        .section-header {
+        /* Calendar Section */
+        .calendar-section {
+            background-color: var(--netflix-dark);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid var(--netflix-gray);
+        }
+
+        .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 40px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--netflix-light);
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .section-header h2 {
+        .calendar-header h2 {
             font-size: 1.8rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calendar-header h2 i {
+            color: var(--pink-accent);
+        }
+
+        .calendar-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            background-color: var(--netflix-gray);
+            border-radius: 30px;
+            padding: 4px;
+        }
+
+        .view-toggle-btn {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            color: var(--accent-white);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .view-toggle-btn.active {
+            background-color: var(--pink-accent);
+            color: white;
+        }
+
+        .month-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--netflix-light);
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--netflix-light);
+            border-color: var(--pink-accent);
+        }
+
+        .current-month {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--white);
+            min-width: 180px;
+            text-align: center;
+        }
+
+        /* Calendar Views */
+        .calendar-view {
+            display: none;
+        }
+
+        .calendar-view.active {
+            display: block;
+        }
+
+        /* Month View */
+        .month-calendar {
+            overflow-x: auto;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--netflix-gray);
+        }
+
+        .weekday {
+            font-weight: bold;
+            color: var(--pink-light);
+            padding: 10px 0;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            background-color: var(--netflix-gray);
+            border-radius: 6px;
+            padding: 15px 10px;
+            min-height: 120px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-day:hover {
+            background-color: var(--netflix-light);
+            transform: translateY(-3px);
+        }
+
+        .calendar-day.today {
+            border-color: var(--pink-accent);
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.4;
+            background-color: var(--netflix-black);
+        }
+
+        .calendar-day.completed {
+            border-color: var(--success);
+        }
+
+        .day-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--white);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .completion-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--success);
+            display: none;
+        }
+
+        .calendar-day.completed .completion-indicator {
+            display: block;
+        }
+
+        .day-stats {
+            font-size: 0.8rem;
+            color: #b3b3b3;
+        }
+
+        .day-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 3px;
+        }
+
+        .day-stat i {
+            font-size: 0.7rem;
+            color: var(--pink-accent);
+        }
+
+        /* Week View */
+        .week-calendar {
+            overflow-x: auto;
+        }
+
+        .week-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .week-day {
+            background-color: var(--netflix-gray);
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .week-day.today {
+            border: 2px solid var(--pink-accent);
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+
+        .week-day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--netflix-light);
+        }
+
+        .week-day-name {
             font-weight: bold;
             color: var(--white);
         }
 
-        .section-header i {
-            color: var(--pink-accent);
-            margin-right: 10px;
+        .week-date {
+            color: var(--pink-light);
+            font-size: 0.9rem;
         }
 
-        .view-all {
-            color: var(--pink-accent);
-            text-decoration: none;
+        .week-tasks {
+            list-style-type: none;
+        }
+
+        .week-task {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .week-task:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .week-task input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--success);
+            cursor: pointer;
+        }
+
+        .week-task label {
             font-size: 0.9rem;
-            font-weight: 500;
+            color: var(--accent-white);
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .week-task.completed label {
+            text-decoration: line-through;
+            color: #b3b3b3;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-card {
+            background-color: var(--netflix-dark);
+            border-radius: 8px;
+            padding: 25px;
+            border-left: 4px solid var(--pink-accent);
+        }
+
+        .dashboard-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dashboard-card h3 i {
+            color: var(--pink-accent);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--pink-accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b3b3b3;
         }
 
         /* Netflix-style Carousels */
@@ -328,156 +625,6 @@
             cursor: pointer;
             font-size: 0.9rem;
             color: var(--accent-white);
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .status-complete {
-            background-color: #4caf50;
-        }
-
-        .status-pending {
-            background-color: #ff9800;
-        }
-
-        .status-not-started {
-            background-color: #f44336;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background-color: var(--netflix-gray);
-            border-radius: 3px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: var(--pink-accent);
-            border-radius: 3px;
-            width: 0%;
-            transition: width 0.5s;
-        }
-
-        /* Dashboard Cards */
-        .dashboard-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .dashboard-card {
-            background-color: var(--netflix-dark);
-            border-radius: 8px;
-            padding: 25px;
-            border-left: 4px solid var(--pink-accent);
-        }
-
-        .dashboard-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .dashboard-card h3 i {
-            color: var(--pink-accent);
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--pink-accent);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #b3b3b3;
-        }
-
-        /* Weekly Schedule */
-        .weekly-schedule {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .day-card {
-            background-color: var(--netflix-dark);
-            border-radius: 8px;
-            padding: 20px;
-            border-top: 4px solid var(--pink-accent);
-        }
-
-        .day-card.current-day {
-            background-color: rgba(233, 30, 99, 0.1);
-            border-top-color: var(--pink-light);
-        }
-
-        .day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .day-name {
-            font-weight: bold;
-            color: var(--white);
-        }
-
-        .day-date {
-            color: var(--pink-light);
-            font-size: 0.9rem;
-        }
-
-        .day-tasks {
-            list-style-type: none;
-        }
-
-        .day-tasks li {
-            margin-bottom: 8px;
-            padding-left: 15px;
-            position: relative;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .day-tasks li:before {
-            content: "•";
-            color: var(--pink-accent);
-            position: absolute;
-            left: 0;
-        }
-
-        .task-checkbox {
-            margin-left: 10px;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--success);
-            cursor: pointer;
         }
 
         /* Water Tracker */
@@ -745,6 +892,24 @@
             .exercise-details {
                 grid-template-columns: 1fr;
             }
+            
+            .calendar-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .calendar-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .month-grid, .week-days {
+                grid-template-columns: 1fr;
+            }
+            
+            .weekdays {
+                display: none;
+            }
         }
 
         /* Responsive Design */
@@ -765,10 +930,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .weekly-schedule {
-                grid-template-columns: 1fr;
-            }
-            
             .reset-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -777,6 +938,16 @@
             .reset-button {
                 width: 100%;
                 max-width: 300px;
+            }
+            
+            .calendar-day {
+                min-height: 100px;
+                padding: 10px 5px;
+            }
+            
+            .week-day {
+                min-height: 180px;
+                padding: 15px;
             }
         }
     </style>
@@ -789,11 +960,10 @@
                 <i class="fas fa-spa"></i> Feminine Wellness
             </a>
             <div class="nav-links">
+                <a href="#calendar">Calendar</a>
                 <a href="#workouts">Workouts</a>
                 <a href="#nutrition">Nutrition</a>
                 <a href="#tracking">Tracking</a>
-                <a href="#mindset">Mindset</a>
-                <a href="#schedule">Schedule</a>
                 <a href="#reset">Reset Data</a>
             </div>
             <div class="user-profile">
@@ -835,6 +1005,51 @@
             </div>
         </section>
 
+        <!-- Calendar Section -->
+        <section id="calendar" class="calendar-section">
+            <div class="calendar-header">
+                <h2><i class="fas fa-calendar-alt"></i> Progress Calendar</h2>
+                <div class="calendar-controls">
+                    <div class="view-toggle">
+                        <button class="view-toggle-btn active" id="month-view-btn">Month</button>
+                        <button class="view-toggle-btn" id="week-view-btn">Week</button>
+                    </div>
+                    <div class="month-nav">
+                        <button class="nav-btn" id="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="current-month" id="current-month">August 2023</div>
+                        <button class="nav-btn" id="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Month View -->
+            <div class="calendar-view month-calendar active" id="month-calendar">
+                <div class="weekdays">
+                    <div class="weekday">Sun</div>
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
+                </div>
+                <div class="month-grid" id="month-grid">
+                    <!-- Calendar days will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Week View -->
+            <div class="calendar-view week-calendar" id="week-calendar">
+                <div class="week-days" id="week-days">
+                    <!-- Week days will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
         <!-- Dashboard Stats -->
         <div class="dashboard-cards">
             <div class="dashboard-card">
@@ -844,7 +1059,7 @@
                 </div>
                 <div class="stats">
                     <div class="stat">
-                        <div class="stat-value" id="workouts-done">2</div>
+                        <div class="stat-value" id="workouts-done">0</div>
                         <div class="stat-label">Completed</div>
                     </div>
                     <div class="stat">
@@ -852,7 +1067,7 @@
                         <div class="stat-label">Total</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value" id="workout-streak">5</div>
+                        <div class="stat-value" id="workout-streak">0</div>
                         <div class="stat-label">Day Streak</div>
                     </div>
                 </div>
@@ -861,19 +1076,19 @@
             <div class="dashboard-card">
                 <h3><i class="fas fa-apple-alt"></i> Nutrition Today</h3>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="nutrition-progress" style="width: 65%"></div>
+                    <div class="progress-fill" id="nutrition-progress" style="width: 0%"></div>
                 </div>
                 <div class="stats">
                     <div class="stat">
-                        <div class="stat-value" id="meals-tracked">3</div>
+                        <div class="stat-value" id="meals-tracked">0</div>
                         <div class="stat-label">Meals</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value" id="water-glasses">5</div>
+                        <div class="stat-value" id="water-glasses">0</div>
                         <div class="stat-label">Water (8oz)</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">A</div>
+                        <div class="stat-value">-</div>
                         <div class="stat-label">Grade</div>
                     </div>
                 </div>
@@ -882,20 +1097,20 @@
             <div class="dashboard-card">
                 <h3><i class="fas fa-heart"></i> Wellness Stats</h3>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="wellness-progress" style="width: 75%"></div>
+                    <div class="progress-fill" id="wellness-progress" style="width: 0%"></div>
                 </div>
                 <div class="stats">
                     <div class="stat">
-                        <div class="stat-value" id="tasks-completed">5</div>
+                        <div class="stat-value" id="tasks-completed">0</div>
                         <div class="stat-label">Tasks Done</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">21</div>
-                        <div class="stat-label">Self-Care Days</div>
+                        <div class="stat-value" id="calendar-days">0</div>
+                        <div class="stat-label">Active Days</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">14</div>
-                        <div class="stat-label">Posture Checks</div>
+                        <div class="stat-value" id="current-streak">0</div>
+                        <div class="stat-label">Day Streak</div>
                     </div>
                 </div>
             </div>
@@ -915,18 +1130,6 @@
             </div>
         </section>
 
-        <!-- Weekly Schedule with Checkboxes -->
-        <section id="schedule">
-            <div class="section-header">
-                <h2><i class="fas fa-calendar-alt"></i> Weekly Schedule</h2>
-                <a href="#" class="view-all">Edit Schedule</a>
-            </div>
-            
-            <div class="weekly-schedule" id="weekly-schedule">
-                <!-- Day cards will be populated by JavaScript -->
-            </div>
-        </section>
-
         <!-- Water Tracker -->
         <section id="hydration">
             <div class="section-header">
@@ -938,7 +1141,7 @@
                 <div class="water-header">
                     <h3>Today's Water Intake</h3>
                     <div class="stat">
-                        <div class="stat-value" id="water-count">5</div>
+                        <div class="stat-value" id="water-count">0</div>
                         <div class="stat-label">/ 8 glasses</div>
                     </div>
                 </div>
@@ -982,7 +1185,7 @@
                     <i class="fas fa-tint-slash"></i> Reset Water Only
                 </button>
             </div>
-            <p style="margin-top: 20px; font-size: 0.9rem;">Note: Daily quotes and workout descriptions will remain.</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">Note: Calendar data will be preserved unless you reset all data.</p>
         </section>
     </main>
 
@@ -998,20 +1201,20 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
+                        <li><a href="#calendar">Calendar</a></li>
                         <li><a href="#workouts">Workout Library</a></li>
                         <li><a href="#nutrition">Meal Plans</a></li>
-                        <li><a href="#mindset">Mindset Tools</a></li>
-                        <li><a href="#schedule">Weekly Planner</a></li>
+                        <li><a href="#hydration">Hydration Tracker</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Core Principles</h3>
                     <ul class="footer-links">
-                        <li><a href="#">No Deprivation Mindset</a></li>
                         <li><a href="#">Progress Over Perfection</a></li>
                         <li><a href="#">Listen to Your Body</a></li>
                         <li><a href="#">Celebrate Small Wins</a></li>
+                        <li><a href="#">Consistency is Key</a></li>
                     </ul>
                 </div>
             </div>
@@ -1230,79 +1433,6 @@
             }
         ];
 
-        const weeklySchedule = [
-            {
-                day: "Monday",
-                date: "Today",
-                tasks: [
-                    { name: "Workout A", checked: false },
-                    { name: "10 min stretching", checked: false },
-                    { name: "30 min walk", checked: false }
-                ],
-                current: true
-            },
-            {
-                day: "Tuesday",
-                date: "Tomorrow",
-                tasks: [
-                    { name: "30 min brisk walk", checked: false },
-                    { name: "Posture exercises", checked: false },
-                    { name: "Self-care ritual", checked: false }
-                ],
-                current: false
-            },
-            {
-                day: "Wednesday",
-                date: "Aug 16",
-                tasks: [
-                    { name: "Workout B", checked: false },
-                    { name: "Waist exercises", checked: false },
-                    { name: "Dance session", checked: false }
-                ],
-                current: false
-            },
-            {
-                day: "Thursday",
-                date: "Aug 17",
-                tasks: [
-                    { name: "Active rest", checked: false },
-                    { name: "Gentle stretching", checked: false },
-                    { name: "Skin care", checked: false }
-                ],
-                current: false
-            },
-            {
-                day: "Friday",
-                date: "Aug 18",
-                tasks: [
-                    { name: "Workout A", checked: false },
-                    { name: "10 min core", checked: false },
-                    { name: "Posture practice", checked: false }
-                ],
-                current: false
-            },
-            {
-                day: "Saturday",
-                date: "Aug 19",
-                tasks: [
-                    { name: "Walking or dancing", checked: false },
-                    { name: "Flexible nutrition", checked: false },
-                    { name: "Social activity", checked: false }
-                ],
-                current: false
-            },
-            {
-                day: "Sunday",
-                date: "Aug 20",
-                tasks: [
-                    { name: "Rest day", checked: false },
-                    { name: "Meal prep", checked: false },
-                    { name: "Next week planning", checked: false }
-                ],
-                current: false
-            }
-        ];
-
         const motivationalQuotes = [
             {
                 text: "Strength is the product of struggle, grace is the choice to move through it with elegance.",
@@ -1338,15 +1468,30 @@
             }
         ];
 
+        // Calendar data structure
+        let calendarData = {};
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+        let currentView = 'month'; // 'month' or 'week'
+
         // DOM Elements
         const workoutCarousel = document.getElementById('workout-carousel');
         const nutritionCarousel = document.getElementById('nutrition-carousel');
-        const weeklyScheduleContainer = document.getElementById('weekly-schedule');
         const waterGlassesContainer = document.getElementById('water-glasses-container');
         const quoteText = document.getElementById('quote-text');
         const quoteAuthor = document.getElementById('quote-author');
         const exerciseModal = document.getElementById('exercise-modal');
         const closeModalBtn = document.getElementById('close-modal-btn');
+        const monthGrid = document.getElementById('month-grid');
+        const weekDays = document.getElementById('week-days');
+        const currentMonthElement = document.getElementById('current-month');
+        const monthViewBtn = document.getElementById('month-view-btn');
+        const weekViewBtn = document.getElementById('week-view-btn');
+        const monthCalendar = document.getElementById('month-calendar');
+        const weekCalendar = document.getElementById('week-calendar');
+        const prevMonthBtn = document.getElementById('prev-month');
+        const nextMonthBtn = document.getElementById('next-month');
 
         // Current state
         let currentQuoteIndex = 0;
@@ -1357,22 +1502,407 @@
         // Initialize the application
         function init() {
             loadFromLocalStorage();
+            initializeCalendarData();
             renderWorkoutCarousel();
             renderNutritionCarousel();
-            renderWeeklySchedule();
             renderWaterGlasses();
             updateDashboardStats();
             setRandomQuote();
+            renderCalendar();
             setupEventListeners();
-            
-            // Set current date on day cards
+        }
+
+        // Initialize calendar data structure
+        function initializeCalendarData() {
             const today = new Date();
-            const options = { weekday: 'long', month: 'short', day: 'numeric' };
-            document.querySelectorAll('.day-date').forEach((el, index) => {
-                const date = new Date();
-                date.setDate(today.getDate() + index);
-                el.textContent = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const todayStr = formatDate(today);
+            
+            // If no calendar data exists for today, initialize it
+            if (!calendarData[todayStr]) {
+                calendarData[todayStr] = {
+                    workoutsCompleted: 0,
+                    mealsCompleted: 0,
+                    waterIntake: 0,
+                    tasksCompleted: 0,
+                    completed: false
+                };
+            }
+        }
+
+        // Format date as YYYY-MM-DD
+        function formatDate(date) {
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        // Get day name
+        function getDayName(date) {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return days[date.getDay()];
+        }
+
+        // Get month name
+        function getMonthName(monthIndex) {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+            return months[monthIndex];
+        }
+
+        // Render calendar
+        function renderCalendar() {
+            updateMonthHeader();
+            
+            if (currentView === 'month') {
+                renderMonthView();
+            } else {
+                renderWeekView();
+            }
+        }
+
+        // Update month header
+        function updateMonthHeader() {
+            currentMonthElement.textContent = `${getMonthName(currentMonth)} ${currentYear}`;
+        }
+
+        // Render month view
+        function renderMonthView() {
+            monthGrid.innerHTML = '';
+            
+            // Get first day of month
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay(); // 0 = Sunday
+            
+            // Add empty cells for days before the first day of month
+            for (let i = 0; i < startingDay; i++) {
+                const prevDate = new Date(currentYear, currentMonth, -i);
+                const dayElement = createCalendarDayElement(prevDate, true);
+                monthGrid.appendChild(dayElement);
+            }
+            
+            // Add days of current month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(currentYear, currentMonth, day);
+                const dayElement = createCalendarDayElement(date, false);
+                monthGrid.appendChild(dayElement);
+            }
+            
+            // Add empty cells to complete the grid (6 rows)
+            const totalCells = 42; // 6 rows * 7 days
+            const filledCells = startingDay + daysInMonth;
+            
+            for (let i = filledCells; i < totalCells; i++) {
+                const nextDate = new Date(currentYear, currentMonth + 1, i - filledCells + 1);
+                const dayElement = createCalendarDayElement(nextDate, true);
+                monthGrid.appendChild(dayElement);
+            }
+        }
+
+        // Create calendar day element
+        function createCalendarDayElement(date, isOtherMonth) {
+            const dayElement = document.createElement('div');
+            const dateStr = formatDate(date);
+            const today = new Date();
+            const todayStr = formatDate(today);
+            const dayData = calendarData[dateStr] || {
+                workoutsCompleted: 0,
+                mealsCompleted: 0,
+                waterIntake: 0,
+                tasksCompleted: 0,
+                completed: false
+            };
+            
+            const isToday = dateStr === todayStr;
+            const isCompleted = dayData.completed;
+            
+            dayElement.className = 'calendar-day';
+            if (isOtherMonth) dayElement.classList.add('other-month');
+            if (isToday) dayElement.classList.add('today');
+            if (isCompleted) dayElement.classList.add('completed');
+            
+            const completionRate = calculateDayCompletion(dayData);
+            
+            dayElement.innerHTML = `
+                <div class="day-number">
+                    <span>${date.getDate()}</span>
+                    <div class="completion-indicator"></div>
+                </div>
+                <div class="day-stats">
+                    ${dayData.workoutsCompleted > 0 ? `<div class="day-stat"><i class="fas fa-dumbbell"></i> ${dayData.workoutsCompleted}</div>` : ''}
+                    ${dayData.mealsCompleted > 0 ? `<div class="day-stat"><i class="fas fa-utensils"></i> ${dayData.mealsCompleted}</div>` : ''}
+                    ${dayData.waterIntake > 0 ? `<div class="day-stat"><i class="fas fa-tint"></i> ${dayData.waterIntake}/8</div>` : ''}
+                </div>
+            `;
+            
+            // Add click event to view day details
+            dayElement.addEventListener('click', () => {
+                if (!isOtherMonth) {
+                    viewDayDetails(date);
+                }
             });
+            
+            return dayElement;
+        }
+
+        // Calculate day completion percentage
+        function calculateDayCompletion(dayData) {
+            let total = 0;
+            let completed = 0;
+            
+            // Workouts (max 8)
+            total += 8;
+            completed += Math.min(dayData.workoutsCompleted, 8);
+            
+            // Meals (max 6)
+            total += 6;
+            completed += Math.min(dayData.mealsCompleted, 6);
+            
+            // Water (max 8)
+            total += 8;
+            completed += Math.min(dayData.waterIntake, 8);
+            
+            // Tasks (max 3)
+            total += 3;
+            completed += Math.min(dayData.tasksCompleted, 3);
+            
+            return total > 0 ? Math.round((completed / total) * 100) : 0;
+        }
+
+        // Render week view
+        function renderWeekView() {
+            weekDays.innerHTML = '';
+            
+            const today = new Date();
+            const currentDay = today.getDay(); // 0 = Sunday
+            
+            // Calculate start of week (Sunday)
+            const startOfWeek = new Date(today);
+            startOfWeek.setDate(today.getDate() - currentDay);
+            
+            // Render 7 days of the week
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startOfWeek);
+                date.setDate(startOfWeek.getDate() + i);
+                const dayElement = createWeekDayElement(date);
+                weekDays.appendChild(dayElement);
+            }
+        }
+
+        // Create week day element
+        function createWeekDayElement(date) {
+            const dayElement = document.createElement('div');
+            const dateStr = formatDate(date);
+            const today = new Date();
+            const todayStr = formatDate(today);
+            const dayData = calendarData[dateStr] || {
+                workoutsCompleted: 0,
+                mealsCompleted: 0,
+                waterIntake: 0,
+                tasksCompleted: 0,
+                completed: false
+            };
+            
+            const isToday = dateStr === todayStr;
+            
+            dayElement.className = 'week-day';
+            if (isToday) dayElement.classList.add('today');
+            
+            // Sample tasks for the day
+            const tasks = [
+                { name: "Complete 1 workout", completed: dayData.workoutsCompleted > 0 },
+                { name: "Eat 3 healthy meals", completed: dayData.mealsCompleted >= 3 },
+                { name: "Drink 8 glasses of water", completed: dayData.waterIntake >= 8 },
+                { name: "Practice posture", completed: dayData.tasksCompleted > 0 }
+            ];
+            
+            let tasksHTML = '';
+            tasks.forEach((task, index) => {
+                tasksHTML += `
+                    <li class="week-task ${task.completed ? 'completed' : ''}">
+                        <input type="checkbox" id="week-task-${dateStr}-${index}" ${task.completed ? 'checked' : ''}>
+                        <label for="week-task-${dateStr}-${index}">${task.name}</label>
+                    </li>
+                `;
+            });
+            
+            dayElement.innerHTML = `
+                <div class="week-day-header">
+                    <div class="week-day-name">${getDayName(date)}</div>
+                    <div class="week-date">${date.getDate()} ${getMonthName(date.getMonth()).substring(0, 3)}</div>
+                </div>
+                <ul class="week-tasks">
+                    ${tasksHTML}
+                </ul>
+            `;
+            
+            // Add checkbox events
+            tasks.forEach((task, index) => {
+                const checkbox = dayElement.querySelector(`#week-task-${dateStr}-${index}`);
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        // Update calendar data
+                        if (!calendarData[dateStr]) {
+                            calendarData[dateStr] = {
+                                workoutsCompleted: 0,
+                                mealsCompleted: 0,
+                                waterIntake: 0,
+                                tasksCompleted: 0,
+                                completed: false
+                            };
+                        }
+                        
+                        // Update specific task
+                        if (index === 0) calendarData[dateStr].workoutsCompleted = 1;
+                        if (index === 1) calendarData[dateStr].mealsCompleted = 3;
+                        if (index === 2) calendarData[dateStr].waterIntake = 8;
+                        if (index === 3) calendarData[dateStr].tasksCompleted = 1;
+                        
+                        // Update completion status
+                        calendarData[dateStr].completed = calculateDayCompletion(calendarData[dateStr]) >= 75;
+                        
+                        saveToLocalStorage();
+                        updateDashboardStats();
+                        
+                        // If viewing month view, re-render to show updated completion
+                        if (currentView === 'month') {
+                            renderMonthView();
+                        }
+                    }
+                });
+            });
+            
+            return dayElement;
+        }
+
+        // View day details
+        function viewDayDetails(date) {
+            const dateStr = formatDate(date);
+            const dayData = calendarData[dateStr] || {
+                workoutsCompleted: 0,
+                mealsCompleted: 0,
+                waterIntake: 0,
+                tasksCompleted: 0,
+                completed: false
+            };
+            
+            alert(`Day Details for ${date.toDateString()}:\n\n` +
+                  `✓ Workouts Completed: ${dayData.workoutsCompleted}\n` +
+                  `✓ Meals Tracked: ${dayData.mealsCompleted}\n` +
+                  `✓ Water Intake: ${dayData.waterIntake} glasses\n` +
+                  `✓ Tasks Completed: ${dayData.tasksCompleted}\n\n` +
+                  `Completion: ${calculateDayCompletion(dayData)}%`);
+        }
+
+        // Switch calendar view
+        function switchView(view) {
+            currentView = view;
+            
+            // Update toggle buttons
+            monthViewBtn.classList.toggle('active', view === 'month');
+            weekViewBtn.classList.toggle('active', view === 'week');
+            
+            // Show/hide views
+            monthCalendar.classList.toggle('active', view === 'month');
+            weekCalendar.classList.toggle('active', view === 'week');
+            
+            // Render the selected view
+            renderCalendar();
+        }
+
+        // Navigate to previous month
+        function prevMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        }
+
+        // Navigate to next month
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        }
+
+        // Update today's data in calendar
+        function updateTodaysCalendarData() {
+            const today = new Date();
+            const todayStr = formatDate(today);
+            
+            if (!calendarData[todayStr]) {
+                calendarData[todayStr] = {
+                    workoutsCompleted: 0,
+                    mealsCompleted: 0,
+                    waterIntake: 0,
+                    tasksCompleted: 0,
+                    completed: false
+                };
+            }
+            
+            // Update with current data
+            const completedWorkouts = workoutData.filter(w => w.checked).length;
+            const completedMeals = nutritionData.filter(m => m.checked).length;
+            const completedTasks = 0; // You can add task tracking if needed
+            
+            calendarData[todayStr].workoutsCompleted = completedWorkouts;
+            calendarData[todayStr].mealsCompleted = completedMeals;
+            calendarData[todayStr].waterIntake = waterIntake;
+            calendarData[todayStr].tasksCompleted = completedTasks;
+            
+            // Update completion status
+            calendarData[todayStr].completed = calculateDayCompletion(calendarData[todayStr]) >= 75;
+            
+            saveToLocalStorage();
+            
+            // Re-render calendar if in month view
+            if (currentView === 'month') {
+                renderMonthView();
+            }
+            
+            // Update streak calculations
+            updateStreakStats();
+        }
+
+        // Calculate streak stats
+        function updateStreakStats() {
+            let currentStreak = 0;
+            let longestStreak = 0;
+            let tempStreak = 0;
+            let activeDays = 0;
+            
+            const today = new Date();
+            
+            // Check last 30 days for streaks
+            for (let i = 0; i < 30; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() - i);
+                const dateStr = formatDate(date);
+                
+                if (calendarData[dateStr] && calendarData[dateStr].completed) {
+                    tempStreak++;
+                    activeDays++;
+                    
+                    if (i === 0) {
+                        currentStreak = tempStreak;
+                    }
+                    
+                    if (tempStreak > longestStreak) {
+                        longestStreak = tempStreak;
+                    }
+                } else {
+                    tempStreak = 0;
+                }
+            }
+            
+            // Update dashboard
+            document.getElementById('current-streak').textContent = currentStreak;
+            document.getElementById('workout-streak').textContent = currentStreak;
+            document.getElementById('calendar-days').textContent = activeDays;
         }
 
         // Render workout carousel with checkboxes
@@ -1411,7 +1941,6 @@
                 
                 // Add click event for opening modal
                 workoutElement.addEventListener('click', (e) => {
-                    // Don't open modal if checkbox was clicked
                     if (!e.target.closest('.carousel-checkbox')) {
                         openExerciseModal(workout);
                     }
@@ -1420,11 +1949,12 @@
                 // Add checkbox event
                 const checkbox = workoutElement.querySelector(`#workout-${workout.id}`);
                 checkbox.addEventListener('change', (e) => {
-                    e.stopPropagation(); // Prevent modal from opening
+                    e.stopPropagation();
                     workout.checked = checkbox.checked;
                     workout.completed = checkbox.checked;
                     workout.progress = checkbox.checked ? 100 : 0;
                     updateDashboardStats();
+                    updateTodaysCalendarData();
                     saveToLocalStorage();
                 });
                 
@@ -1467,54 +1997,11 @@
                     meal.checked = checkbox.checked;
                     meal.completed = checkbox.checked;
                     updateDashboardStats();
+                    updateTodaysCalendarData();
                     saveToLocalStorage();
                 });
                 
                 nutritionCarousel.appendChild(mealElement);
-            });
-        }
-
-        // Render weekly schedule with checkboxes
-        function renderWeeklySchedule() {
-            weeklyScheduleContainer.innerHTML = '';
-            
-            weeklySchedule.forEach(day => {
-                const dayElement = document.createElement('div');
-                dayElement.className = `day-card ${day.current ? 'current-day' : ''}`;
-                
-                let tasksHTML = '';
-                day.tasks.forEach((task, index) => {
-                    tasksHTML += `
-                        <li>
-                            ${task.name}
-                            <input type="checkbox" class="task-checkbox" 
-                                   id="${day.day.toLowerCase()}-task-${index}" 
-                                   ${task.checked ? 'checked' : ''}>
-                        </li>
-                    `;
-                });
-                
-                dayElement.innerHTML = `
-                    <div class="day-header">
-                        <div class="day-name">${day.day}</div>
-                        <div class="day-date">${day.date}</div>
-                    </div>
-                    <ul class="day-tasks">
-                        ${tasksHTML}
-                    </ul>
-                `;
-                
-                // Add checkbox events
-                day.tasks.forEach((task, index) => {
-                    const checkbox = dayElement.querySelector(`#${day.day.toLowerCase()}-task-${index}`);
-                    checkbox.addEventListener('change', () => {
-                        task.checked = checkbox.checked;
-                        updateDashboardStats();
-                        saveToLocalStorage();
-                    });
-                });
-                
-                weeklyScheduleContainer.appendChild(dayElement);
             });
         }
 
@@ -1565,20 +2052,132 @@
             document.getElementById('nutrition-progress').style.width = `${nutritionPercentage}%`;
             document.getElementById('meals-tracked').textContent = completedMeals;
             
-            // Update completed tasks count
-            completedTasksCount = 0;
-            weeklySchedule.forEach(day => {
-                day.tasks.forEach(task => {
-                    if (task.checked) completedTasksCount++;
-                });
-            });
-            
-            document.getElementById('tasks-completed').textContent = completedTasksCount;
-            
             // Update wellness progress
-            const totalTasks = weeklySchedule.reduce((sum, day) => sum + day.tasks.length, 0);
-            const wellnessPercentage = Math.round((completedTasksCount / totalTasks) * 100);
+            const totalItems = workoutData.length + nutritionData.length;
+            const completedItems = completedWorkouts + completedMeals;
+            const wellnessPercentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
             document.getElementById('wellness-progress').style.width = `${wellnessPercentage}%`;
+            
+            // Update streak stats
+            updateStreakStats();
+        }
+
+        // Update water tracker
+        function updateWaterTracker() {
+            renderWaterGlasses();
+            updateDashboardStats();
+            updateTodaysCalendarData();
+            saveToLocalStorage();
+        }
+
+        // Reset all data to zero
+        function resetAllData() {
+            if (confirm("Are you sure you want to reset ALL data to zero? This will also clear calendar history. This cannot be undone.")) {
+                // Reset workout data
+                workoutData.forEach(workout => {
+                    workout.completed = false;
+                    workout.progress = 0;
+                    workout.checked = false;
+                });
+                
+                // Reset nutrition data
+                nutritionData.forEach(meal => {
+                    meal.completed = false;
+                    meal.checked = false;
+                });
+                
+                // Reset water intake
+                waterIntake = 0;
+                
+                // Reset calendar data
+                calendarData = {};
+                initializeCalendarData();
+                
+                // Re-render everything
+                renderWorkoutCarousel();
+                renderNutritionCarousel();
+                renderWaterGlasses();
+                renderCalendar();
+                updateDashboardStats();
+                saveToLocalStorage();
+                
+                alert("All data has been reset to zero!");
+            }
+        }
+
+        // Reset this week's data
+        function resetWeekData() {
+            if (confirm("Reset all data for this week? Workout, nutrition, and water checkboxes will be cleared.")) {
+                // Reset workout data
+                workoutData.forEach(workout => {
+                    workout.completed = false;
+                    workout.progress = 0;
+                    workout.checked = false;
+                });
+                
+                // Reset nutrition data
+                nutritionData.forEach(meal => {
+                    meal.completed = false;
+                    meal.checked = false;
+                });
+                
+                // Reset water intake
+                waterIntake = 0;
+                
+                // Re-render everything
+                renderWorkoutCarousel();
+                renderNutritionCarousel();
+                renderWaterGlasses();
+                updateDashboardStats();
+                updateTodaysCalendarData();
+                saveToLocalStorage();
+                
+                alert("This week's data has been reset!");
+            }
+        }
+
+        // Reset today's data only
+        function resetTodayData() {
+            if (confirm("Reset today's data only? All checkboxes and water intake will be cleared.")) {
+                // Reset workout data
+                workoutData.forEach(workout => {
+                    workout.completed = false;
+                    workout.progress = 0;
+                    workout.checked = false;
+                });
+                
+                // Reset nutrition data
+                nutritionData.forEach(meal => {
+                    meal.completed = false;
+                    meal.checked = false;
+                });
+                
+                // Reset water intake
+                waterIntake = 0;
+                
+                // Update calendar for today
+                const today = new Date();
+                const todayStr = formatDate(today);
+                if (calendarData[todayStr]) {
+                    calendarData[todayStr] = {
+                        workoutsCompleted: 0,
+                        mealsCompleted: 0,
+                        waterIntake: 0,
+                        tasksCompleted: 0,
+                        completed: false
+                    };
+                }
+                
+                // Re-render everything
+                renderWorkoutCarousel();
+                renderNutritionCarousel();
+                renderWaterGlasses();
+                renderCalendar();
+                updateDashboardStats();
+                saveToLocalStorage();
+                
+                alert("Today's data has been reset!");
+            }
         }
 
         // Set a random motivational quote
@@ -1677,98 +2276,8 @@
                 // Update carousel and dashboard
                 renderWorkoutCarousel();
                 updateDashboardStats();
+                updateTodaysCalendarData();
                 saveToLocalStorage();
-            }
-        }
-
-        // Update water tracker
-        function updateWaterTracker() {
-            renderWaterGlasses();
-            updateDashboardStats();
-            saveToLocalStorage();
-        }
-
-        // Reset all data to zero
-        function resetAllData() {
-            if (confirm("Are you sure you want to reset ALL data to zero? This cannot be undone.")) {
-                // Reset workout data
-                workoutData.forEach(workout => {
-                    workout.completed = false;
-                    workout.progress = 0;
-                    workout.checked = false;
-                });
-                
-                // Reset nutrition data
-                nutritionData.forEach(meal => {
-                    meal.completed = false;
-                    meal.checked = false;
-                });
-                
-                // Reset weekly schedule
-                weeklySchedule.forEach(day => {
-                    day.tasks.forEach(task => {
-                        task.checked = false;
-                    });
-                });
-                
-                // Reset water intake
-                waterIntake = 0;
-                
-                // Reset date for water tracking
-                localStorage.removeItem('lastWaterResetDate');
-                
-                // Re-render everything
-                renderWorkoutCarousel();
-                renderNutritionCarousel();
-                renderWeeklySchedule();
-                renderWaterGlasses();
-                updateDashboardStats();
-                saveToLocalStorage();
-                
-                alert("All data has been reset to zero!");
-            }
-        }
-
-        // Reset this week's data
-        function resetWeekData() {
-            if (confirm("Reset all data for this week? Workout, nutrition, and task checkboxes will be cleared.")) {
-                // Reset workout data
-                workoutData.forEach(workout => {
-                    workout.completed = false;
-                    workout.progress = 0;
-                    workout.checked = false;
-                });
-                
-                // Reset nutrition data
-                nutritionData.forEach(meal => {
-                    meal.completed = false;
-                    meal.checked = false;
-                });
-                
-                // Reset weekly schedule
-                weeklySchedule.forEach(day => {
-                    day.tasks.forEach(task => {
-                        task.checked = false;
-                    });
-                });
-                
-                // Re-render everything
-                renderWorkoutCarousel();
-                renderNutritionCarousel();
-                renderWeeklySchedule();
-                updateDashboardStats();
-                saveToLocalStorage();
-                
-                alert("This week's data has been reset!");
-            }
-        }
-
-        // Reset today's data only
-        function resetTodayData() {
-            if (confirm("Reset today's data only? Water intake will be cleared, but weekly checkboxes remain.")) {
-                waterIntake = 0;
-                updateWaterTracker();
-                alert("Today's data has been reset!");
             }
         }
 
@@ -1777,8 +2286,10 @@
             const data = {
                 workoutData,
                 nutritionData,
-                weeklySchedule,
+                calendarData,
                 waterIntake,
+                currentMonth,
+                currentYear,
                 lastSaved: new Date().toISOString()
             };
             localStorage.setItem('feminineWellnessData', JSON.stringify(data));
@@ -1812,22 +2323,22 @@
                         });
                     }
                     
-                    // Update weekly schedule
-                    if (data.weeklySchedule) {
-                        data.weeklySchedule.forEach((savedDay, dayIndex) => {
-                            if (weeklySchedule[dayIndex] && savedDay.tasks) {
-                                savedDay.tasks.forEach((savedTask, taskIndex) => {
-                                    if (weeklySchedule[dayIndex].tasks[taskIndex]) {
-                                        weeklySchedule[dayIndex].tasks[taskIndex].checked = savedTask.checked || false;
-                                    }
-                                });
-                            }
-                        });
+                    // Update calendar data
+                    if (data.calendarData) {
+                        calendarData = data.calendarData;
                     }
                     
                     // Update water intake
                     if (data.waterIntake !== undefined) {
                         waterIntake = data.waterIntake;
+                    }
+                    
+                    // Update calendar month/year
+                    if (data.currentMonth !== undefined) {
+                        currentMonth = data.currentMonth;
+                    }
+                    if (data.currentYear !== undefined) {
+                        currentYear = data.currentYear;
                     }
                 } catch (e) {
                     console.error("Error loading saved data:", e);
@@ -1910,10 +2421,19 @@
                         // Update carousel and dashboard
                         renderWorkoutCarousel();
                         updateDashboardStats();
+                        updateTodaysCalendarData();
                         saveToLocalStorage();
                     }
                 }
             });
+            
+            // Calendar view toggle
+            monthViewBtn.addEventListener('click', () => switchView('month'));
+            weekViewBtn.addEventListener('click', () => switchView('week'));
+            
+            // Calendar navigation
+            prevMonthBtn.addEventListener('click', prevMonth);
+            nextMonthBtn.addEventListener('click', nextMonth);
             
             // Header scroll effect
             window.addEventListener('scroll', () => {
