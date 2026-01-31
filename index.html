@@ -272,6 +272,88 @@
             color: white;
         }
 
+        /* Daily Plan Indicator */
+        .daily-plan-indicator {
+            background: linear-gradient(135deg, var(--pink-accent), #ff4081);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 15px 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            animation: fadeIn 0.5s ease;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.2);
+        }
+
+        .plan-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .plan-icon {
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .plan-details p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .day-counter {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Meal Plan Tags */
+        .meal-plan-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .tag-mediterranean {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+
+        .tag-high-protein {
+            background: linear-gradient(135deg, #2196F3, #1565C0);
+            color: white;
+        }
+
+        .tag-vegetarian {
+            background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+            color: white;
+        }
+
+        .tag-balanced {
+            background: linear-gradient(135deg, #FF9800, #EF6C00);
+            color: white;
+        }
+
         /* Calendar Section - Mobile Optimized */
         .calendar-section {
             background-color: var(--netflix-dark);
@@ -1142,6 +1224,72 @@
             color: var(--pink-accent);
         }
 
+        /* Next Day Preview */
+        .next-day-preview {
+            background: var(--netflix-dark);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--pink-accent);
+        }
+
+        .next-day-preview h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .preview-meals {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .preview-meal {
+            flex: 0 0 auto;
+            width: 180px;
+            background: var(--netflix-gray);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .preview-meal:hover {
+            border-color: var(--pink-accent);
+            transform: translateY(-5px);
+        }
+
+        /* Meal Time Indicators */
+        .meal-time {
+            font-size: 0.85rem;
+            color: var(--pink-accent);
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Animation for new day */
+        @keyframes newDayPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .new-day-animation {
+            animation: newDayPulse 0.5s ease 3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Responsive Design - Mobile First */
         @media (max-width: 768px) {
             .container {
@@ -1273,6 +1421,21 @@
                 padding: 14px 16px;
                 font-size: 0.95rem;
             }
+
+            /* Daily Plan */
+            .daily-plan-indicator {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .plan-info {
+                width: 100%;
+            }
+
+            .preview-meal {
+                width: 160px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1295,6 +1458,11 @@
 
             .stat-value {
                 font-size: 1.4rem;
+            }
+
+            .preview-meal {
+                width: 140px;
+                padding: 12px;
             }
         }
 
@@ -1492,6 +1660,28 @@
             </div>
         </section>
 
+        <!-- Daily Plan Indicator -->
+        <section id="daily-plan">
+            <div class="daily-plan-indicator" id="daily-plan-indicator">
+                <div class="plan-info">
+                    <div class="plan-icon">
+                        <i class="fas fa-calendar-day" id="plan-icon"></i>
+                    </div>
+                    <div class="plan-details">
+                        <h4 id="plan-title">Today's Meal Plan: Mediterranean</h4>
+                        <p id="plan-description">Fresh vegetables, lean proteins, and healthy fats</p>
+                        <div>
+                            <span class="meal-plan-tag tag-mediterranean" id="plan-tag">Mediterranean</span>
+                            <span class="day-counter" id="day-counter">Day 1</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="refresh-quote" id="view-plan-details">
+                    <i class="fas fa-info-circle"></i> Details
+                </button>
+            </div>
+        </section>
+
         <!-- Calendar Section -->
         <section id="calendar" class="calendar-section">
             <div class="calendar-header">
@@ -1647,8 +1837,10 @@
         <!-- Nutrition Carousel with Checkboxes -->
         <section id="nutrition">
             <div class="section-header">
-                <h2><i class="fas fa-utensils"></i> Daily Nutrition Plan</h2>
-                <a href="#" class="view-all">View Full Plan</a>
+                <h2><i class="fas fa-utensils"></i> Today's Nutrition Plan</h2>
+                <div class="view-all" id="next-day-info">
+                    <i class="fas fa-arrow-right"></i> Tomorrow: High-Protein
+                </div>
             </div>
             
             <div class="carousel-container">
@@ -1656,6 +1848,14 @@
                     <!-- Nutrition items will be populated by JavaScript -->
                 </div>
                 <div class="swipe-hint">Swipe →</div>
+            </div>
+        </section>
+
+        <!-- Next Day Preview -->
+        <section class="next-day-preview">
+            <h4><i class="fas fa-calendar-plus"></i> Tomorrow's Preview</h4>
+            <div class="preview-meals" id="next-day-preview">
+                <!-- Next day meals will be populated by JavaScript -->
             </div>
         </section>
 
@@ -1765,6 +1965,262 @@
     </div>
 
     <script>
+        // DATA FOR DAILY MEAL PLANS
+        const mealPlans = {
+            mediterranean: {
+                name: "Mediterranean",
+                description: "Fresh vegetables, lean proteins, and healthy fats",
+                icon: "fas fa-fish",
+                color: "#4CAF50",
+                tagClass: "tag-mediterranean",
+                meals: [
+                    {
+                        id: 1,
+                        title: "Greek Yogurt Bowl",
+                        time: "8-9 AM",
+                        description: "Greek yogurt with honey, nuts, and fresh berries",
+                        icon: "fas fa-bowl-food",
+                        calories: "320 cal",
+                        nutrients: "High in protein & probiotics"
+                    },
+                    {
+                        id: 2,
+                        title: "Hummus & Veggies",
+                        time: "10-11 AM",
+                        description: "Fresh vegetables with homemade hummus",
+                        icon: "fas fa-carrot",
+                        calories: "180 cal",
+                        nutrients: "Fiber & healthy fats"
+                    },
+                    {
+                        id: 3,
+                        title: "Mediterranean Salad",
+                        time: "1-2 PM",
+                        description: "Quinoa, chickpeas, tomatoes, cucumber, feta cheese",
+                        icon: "fas fa-leaf",
+                        calories: "420 cal",
+                        nutrients: "Complete protein & vitamins"
+                    },
+                    {
+                        id: 4,
+                        title: "Olives & Almonds",
+                        time: "4-5 PM",
+                        description: "Mixed olives and a handful of almonds",
+                        icon: "fas fa-seedling",
+                        calories: "200 cal",
+                        nutrients: "Healthy fats & antioxidants"
+                    },
+                    {
+                        id: 5,
+                        title: "Grilled Salmon",
+                        time: "7-8 PM",
+                        description: "Salmon with roasted vegetables and lemon",
+                        icon: "fas fa-fish",
+                        calories: "450 cal",
+                        nutrients: "Omega-3 & protein"
+                    },
+                    {
+                        id: 6,
+                        title: "Herbal Infusion",
+                        time: "Evening",
+                        description: "Mint or chamomile tea with lemon",
+                        icon: "fas fa-mug-hot",
+                        calories: "5 cal",
+                        nutrients: "Hydration & digestion"
+                    }
+                ]
+            },
+            highProtein: {
+                name: "High-Protein",
+                description: "Lean proteins for muscle recovery and energy",
+                icon: "fas fa-dumbbell",
+                color: "#2196F3",
+                tagClass: "tag-high-protein",
+                meals: [
+                    {
+                        id: 1,
+                        title: "Protein Pancakes",
+                        time: "8-9 AM",
+                        description: "Protein powder pancakes with berries",
+                        icon: "fas fa-pancakes",
+                        calories: "350 cal",
+                        nutrients: "35g protein"
+                    },
+                    {
+                        id: 2,
+                        title: "Hard-Boiled Eggs",
+                        time: "10-11 AM",
+                        description: "2 hard-boiled eggs with sea salt",
+                        icon: "fas fa-egg",
+                        calories: "140 cal",
+                        nutrients: "12g protein"
+                    },
+                    {
+                        id: 3,
+                        title: "Chicken & Quinoa",
+                        time: "1-2 PM",
+                        description: "Grilled chicken breast with quinoa and broccoli",
+                        icon: "fas fa-drumstick-bite",
+                        calories: "480 cal",
+                        nutrients: "45g protein"
+                    },
+                    {
+                        id: 4,
+                        title: "Cottage Cheese",
+                        time: "4-5 PM",
+                        description: "Cottage cheese with pineapple",
+                        icon: "fas fa-cheese",
+                        calories: "180 cal",
+                        nutrients: "20g protein"
+                    },
+                    {
+                        id: 5,
+                        title: "Lean Beef Stir-fry",
+                        time: "7-8 PM",
+                        description: "Lean beef with mixed vegetables",
+                        icon: "fas fa-utensils",
+                        calories: "420 cal",
+                        nutrients: "40g protein"
+                    },
+                    {
+                        id: 6,
+                        title: "Casein Shake",
+                        time: "Before bed",
+                        description: "Casein protein shake",
+                        icon: "fas fa-blender",
+                        calories: "120 cal",
+                        nutrients: "25g slow-digesting protein"
+                    }
+                ]
+            },
+            vegetarian: {
+                name: "Vegetarian",
+                description: "Plant-based proteins and whole grains",
+                icon: "fas fa-leaf",
+                color: "#9C27B0",
+                tagClass: "tag-vegetarian",
+                meals: [
+                    {
+                        id: 1,
+                        title: "Tofu Scramble",
+                        time: "8-9 AM",
+                        description: "Tofu scramble with spinach and mushrooms",
+                        icon: "fas fa-egg",
+                        calories: "280 cal",
+                        nutrients: "20g plant protein"
+                    },
+                    {
+                        id: 2,
+                        title: "Apple & Nut Butter",
+                        time: "10-11 AM",
+                        description: "Apple slices with almond butter",
+                        icon: "fas fa-apple-alt",
+                        calories: "220 cal",
+                        nutrients: "Healthy fats & fiber"
+                    },
+                    {
+                        id: 3,
+                        title: "Lentil Curry",
+                        time: "1-2 PM",
+                        description: "Red lentil curry with brown rice",
+                        icon: "fas fa-bowl-rice",
+                        calories: "420 cal",
+                        nutrients: "25g protein & fiber"
+                    },
+                    {
+                        id: 4,
+                        title: "Edamame",
+                        time: "4-5 PM",
+                        description: "Steamed edamame with sea salt",
+                        icon: "fas fa-seedling",
+                        calories: "160 cal",
+                        nutrients: "15g protein"
+                    },
+                    {
+                        id: 5,
+                        title: "Chickpea Buddha Bowl",
+                        time: "7-8 PM",
+                        description: "Roasted chickpeas with quinoa and tahini",
+                        icon: "fas fa-bowl-food",
+                        calories: "380 cal",
+                        nutrients: "Complete protein"
+                    },
+                    {
+                        id: 6,
+                        title: "Golden Milk",
+                        time: "Evening",
+                        description: "Turmeric milk with cinnamon",
+                        icon: "fas fa-mug-hot",
+                        calories: "90 cal",
+                        nutrients: "Anti-inflammatory"
+                    }
+                ]
+            },
+            balanced: {
+                name: "Balanced",
+                description: "Well-rounded meals for optimal nutrition",
+                icon: "fas fa-balance-scale",
+                color: "#FF9800",
+                tagClass: "tag-balanced",
+                meals: [
+                    {
+                        id: 1,
+                        title: "Oatmeal Combo",
+                        time: "8-9 AM",
+                        description: "Oats with banana, nuts, and a dash of cinnamon",
+                        icon: "fas fa-bowl-food",
+                        calories: "320 cal",
+                        nutrients: "Complex carbs & fiber"
+                    },
+                    {
+                        id: 2,
+                        title: "Greek Yogurt",
+                        time: "10-11 AM",
+                        description: "Greek yogurt with chia seeds",
+                        icon: "fas fa-blender",
+                        calories: "150 cal",
+                        nutrients: "Protein & probiotics"
+                    },
+                    {
+                        id: 3,
+                        title: "Turkey Wrap",
+                        time: "1-2 PM",
+                        description: "Whole wheat wrap with turkey and veggies",
+                        icon: "fas fa-bread-slice",
+                        calories: "380 cal",
+                        nutrients: "Lean protein & fiber"
+                    },
+                    {
+                        id: 4,
+                        title: "Protein Bar",
+                        time: "4-5 PM",
+                        description: "Natural protein bar (low sugar)",
+                        icon: "fas fa-candy-bar",
+                        calories: "200 cal",
+                        nutrients: "15g protein"
+                    },
+                    {
+                        id: 5,
+                        title: "Baked Salmon",
+                        time: "7-8 PM",
+                        description: "Salmon with sweet potato and asparagus",
+                        icon: "fas fa-fish",
+                        calories: "450 cal",
+                        nutrients: "Omega-3 & vitamins"
+                    },
+                    {
+                        id: 6,
+                        title: "Herbal Tea",
+                        time: "Evening",
+                        description: "Peppermint or ginger tea",
+                        icon: "fas fa-mug-hot",
+                        calories: "5 cal",
+                        nutrients: "Hydration & digestion"
+                    }
+                ]
+            }
+        };
+
         // Data for the application
         const workoutData = [
             {
@@ -1865,63 +2321,6 @@
             }
         ];
 
-        const nutritionData = [
-            {
-                id: 1,
-                title: "Breakfast",
-                time: "8-9 AM",
-                description: "Eggs + sweet potato or Oats with fruit",
-                icon: "fas fa-egg",
-                completed: false,
-                checked: false
-            },
-            {
-                id: 2,
-                title: "Mid-Morning Snack",
-                time: "10-11 AM",
-                description: "Fruit or roasted groundnuts",
-                icon: "fas fa-apple-alt",
-                completed: false,
-                checked: false
-            },
-            {
-                id: 3,
-                title: "Lunch",
-                time: "1-2 PM",
-                description: "Protein + complex carb + 2 veggie servings",
-                icon: "fas fa-utensils",
-                completed: false,
-                checked: false
-            },
-            {
-                id: 4,
-                title: "Afternoon Snack",
-                time: "4-5 PM",
-                description: "Yogurt or hard-boiled egg",
-                icon: "fas fa-seedling",
-                completed: false,
-                checked: false
-            },
-            {
-                id: 5,
-                title: "Dinner",
-                time: "7-8 PM",
-                description: "Light meal: Grilled protein + salad",
-                icon: "fas fa-moon",
-                completed: false,
-                checked: false
-            },
-            {
-                id: 6,
-                title: "Hydration",
-                time: "All Day",
-                description: "1.5-2L water with lemon/mint",
-                icon: "fas fa-tint",
-                completed: false,
-                checked: false
-            }
-        ];
-
         const motivationalQuotes = [
             {
                 text: "Strength is the product of struggle, grace is the choice to move through it with elegance.",
@@ -1964,6 +2363,12 @@
         let currentYear = currentDate.getFullYear();
         let currentView = 'month'; // 'month' or 'week'
 
+        // DAY TRACKING SYSTEM
+        let currentDay = 0;
+        let lastResetDate = null;
+        let currentMealPlan = null;
+        let nutritionData = [];
+
         // DOM Elements
         const workoutCarousel = document.getElementById('workout-carousel');
         const nutritionCarousel = document.getElementById('nutrition-carousel');
@@ -1998,6 +2403,7 @@
         function init() {
             showLoading();
             loadFromLocalStorage();
+            checkAndResetDailyData();
             initializeCalendarData();
             renderWorkoutCarousel();
             renderNutritionCarousel();
@@ -2008,10 +2414,125 @@
             setupEventListeners();
             hideLoading();
             
-            // Show welcome toast
             setTimeout(() => {
                 showToast('Welcome to your wellness journey! 💖', 'success');
             }, 1000);
+        }
+
+        // Check if we need to reset daily data
+        function checkAndResetDailyData() {
+            const today = new Date().toDateString();
+            const savedData = localStorage.getItem('feminineWellnessData');
+            
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                lastResetDate = data.lastResetDate || null;
+                currentDay = data.currentDay || 0;
+            }
+            
+            // If it's a new day or first visit
+            if (!lastResetDate || lastResetDate !== today) {
+                resetDailyData();
+                lastResetDate = today;
+                
+                // Animate to show new day
+                const indicator = document.getElementById('daily-plan-indicator');
+                if (indicator) {
+                    indicator.classList.add('new-day-animation');
+                    setTimeout(() => {
+                        indicator.classList.remove('new-day-animation');
+                    }, 1500);
+                }
+                
+                showToast("New day! Today's meal plan is ready! 🌟", 'success');
+            }
+            
+            // Determine today's meal plan based on day cycle
+            const planKeys = Object.keys(mealPlans);
+            const planIndex = currentDay % planKeys.length;
+            currentMealPlan = mealPlans[planKeys[planIndex]];
+            
+            // Update nutrition data for today's plan
+            nutritionData = currentMealPlan.meals.map(meal => ({
+                ...meal,
+                completed: false,
+                checked: false
+            }));
+            
+            // Update UI with plan info
+            updateDailyPlanUI();
+        }
+
+        // Reset daily data (runs automatically at midnight or new day)
+        function resetDailyData() {
+            // Reset workout checkboxes
+            workoutData.forEach(workout => {
+                workout.completed = false;
+                workout.progress = 0;
+                workout.checked = false;
+            });
+            
+            // Reset water intake
+            waterIntake = 0;
+            
+            // Increment day counter
+            currentDay++;
+            
+            // Update streak calculations
+            updateStreakStats();
+            
+            // Save the reset
+            saveToLocalStorage();
+        }
+
+        // Update daily plan UI
+        function updateDailyPlanUI() {
+            if (!currentMealPlan) return;
+            
+            // Update plan indicator
+            document.getElementById('plan-title').textContent = `Today's Meal Plan: ${currentMealPlan.name}`;
+            document.getElementById('plan-description').textContent = currentMealPlan.description;
+            document.getElementById('plan-icon').className = currentMealPlan.icon;
+            
+            // Update tag
+            const tag = document.getElementById('plan-tag');
+            tag.textContent = currentMealPlan.name;
+            tag.className = `meal-plan-tag ${currentMealPlan.tagClass}`;
+            
+            // Update day counter
+            document.getElementById('day-counter').textContent = `Day ${currentDay + 1}`;
+            
+            // Update next day info
+            const planKeys = Object.keys(mealPlans);
+            const nextPlanIndex = (currentDay + 1) % planKeys.length;
+            const nextPlan = mealPlans[planKeys[nextPlanIndex]];
+            document.getElementById('next-day-info').innerHTML = 
+                `<i class="fas fa-arrow-right"></i> Tomorrow: ${nextPlan.name}`;
+            
+            // Update next day preview
+            updateNextDayPreview(nextPlan);
+        }
+
+        // Update next day preview
+        function updateNextDayPreview(nextPlan) {
+            const previewContainer = document.getElementById('next-day-preview');
+            if (!previewContainer || !nextPlan) return;
+            
+            // Show 3 sample meals from next day's plan
+            const sampleMeals = nextPlan.meals.slice(0, 3);
+            
+            previewContainer.innerHTML = sampleMeals.map(meal => `
+                <div class="preview-meal">
+                    <div class="meal-time">
+                        <i class="fas fa-clock"></i> ${meal.time}
+                    </div>
+                    <h5>${meal.title}</h5>
+                    <p style="font-size: 0.85rem; color: #b3b3b3; margin-top: 5px;">${meal.description}</p>
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: var(--pink-light);">
+                        <i class="fas fa-fire"></i> ${meal.calories}
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Initialize calendar data structure
@@ -2476,8 +2997,11 @@
             });
         }
 
-        // Render nutrition carousel with checkboxes
+        // Render nutrition carousel with today's plan
         function renderNutritionCarousel() {
+            const nutritionCarousel = document.getElementById('nutrition-carousel');
+            if (!nutritionCarousel) return;
+            
             nutritionCarousel.innerHTML = '';
             
             nutritionData.forEach(meal => {
@@ -2487,13 +3011,18 @@
                 const mealElement = document.createElement('div');
                 mealElement.className = 'carousel-item';
                 mealElement.innerHTML = `
-                    <div class="carousel-img">
+                    <div class="carousel-img" style="background: linear-gradient(135deg, ${currentMealPlan.color}30, ${currentMealPlan.color}60);">
                         <i class="${meal.icon}"></i>
                     </div>
                     <div class="carousel-content">
+                        <div class="meal-time">
+                            <i class="fas fa-clock"></i> ${meal.time}
+                        </div>
                         <h3>${meal.title}</h3>
-                        <p>${meal.time}</p>
                         <p>${meal.description}</p>
+                        <div style="margin: 8px 0; font-size: 0.85rem; color: var(--pink-light);">
+                            <i class="fas fa-fire"></i> ${meal.calories} • ${meal.nutrients}
+                        </div>
                         <div>
                             <span class="status-indicator ${statusClass}"></span>
                             <span>${statusText}</span>
@@ -2615,7 +3144,12 @@
                 calendarData = {};
                 initializeCalendarData();
                 
+                // Reset daily tracking
+                currentDay = 0;
+                lastResetDate = null;
+                
                 // Re-render everything
+                checkAndResetDailyData();
                 renderWorkoutCarousel();
                 renderNutritionCarousel();
                 renderWaterGlasses();
@@ -2811,7 +3345,7 @@
             }
         }
 
-        // Save data to localStorage
+        // Save data to localStorage with daily tracking
         function saveToLocalStorage() {
             const data = {
                 workoutData,
@@ -2820,19 +3354,29 @@
                 waterIntake,
                 currentMonth,
                 currentYear,
+                currentDay,
+                lastResetDate,
                 lastSaved: new Date().toISOString()
             };
             localStorage.setItem('feminineWellnessData', JSON.stringify(data));
         }
 
-        // Load data from localStorage
+        // Load data from localStorage with daily tracking
         function loadFromLocalStorage() {
             const savedData = localStorage.getItem('feminineWellnessData');
             if (savedData) {
                 try {
                     const data = JSON.parse(savedData);
                     
-                    // Update workout data
+                    // Load day tracking
+                    if (data.currentDay !== undefined) {
+                        currentDay = data.currentDay;
+                    }
+                    if (data.lastResetDate) {
+                        lastResetDate = data.lastResetDate;
+                    }
+                    
+                    // Load workout data
                     if (data.workoutData) {
                         data.workoutData.forEach((savedWorkout, index) => {
                             if (workoutData[index]) {
@@ -2843,27 +3387,23 @@
                         });
                     }
                     
-                    // Update nutrition data
-                    if (data.nutritionData) {
-                        data.nutritionData.forEach((savedMeal, index) => {
-                            if (nutritionData[index]) {
-                                nutritionData[index].completed = savedMeal.completed || false;
-                                nutritionData[index].checked = savedMeal.checked || false;
-                            }
-                        });
+                    // Load nutrition data - only if it's from today
+                    const today = new Date().toDateString();
+                    if (data.nutritionData && data.lastResetDate === today) {
+                        nutritionData = data.nutritionData;
                     }
                     
-                    // Update calendar data
+                    // Load calendar data
                     if (data.calendarData) {
                         calendarData = data.calendarData;
                     }
                     
-                    // Update water intake
+                    // Load water intake
                     if (data.waterIntake !== undefined) {
                         waterIntake = data.waterIntake;
                     }
                     
-                    // Update calendar month/year
+                    // Load calendar month/year
                     if (data.currentMonth !== undefined) {
                         currentMonth = data.currentMonth;
                     }
@@ -2915,6 +3455,131 @@
             mobileMenu.classList.remove('active');
             mobileMenuOverlay.style.display = 'none';
             mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
+        }
+
+        // Show plan details modal
+        function showPlanDetails() {
+            if (!currentMealPlan) return;
+            
+            const modalContent = `
+                <div style="padding: 20px; max-width: 500px; margin: 0 auto;">
+                    <h3 style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i class="${currentMealPlan.icon}"></i> ${currentMealPlan.name} Plan
+                    </h3>
+                    
+                    <div class="meal-plan-tag ${currentMealPlan.tagClass}" style="margin-bottom: 15px;">
+                        ${currentMealPlan.name}
+                    </div>
+                    
+                    <p style="color: #b3b3b3; margin-bottom: 25px; line-height: 1.6;">
+                        ${currentMealPlan.description}
+                    </p>
+                    
+                    <h4 style="margin-bottom: 15px; color: var(--white);">
+                        <i class="fas fa-utensils"></i> Today's Meals
+                    </h4>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        ${currentMealPlan.meals.map(meal => `
+                            <div style="background: var(--netflix-gray); padding: 15px; border-radius: 10px; border-left: 4px solid ${currentMealPlan.color};">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--white);">${meal.title}</div>
+                                        <div style="color: var(--pink-accent); font-size: 0.9rem; margin-top: 5px;">
+                                            <i class="fas fa-clock"></i> ${meal.time}
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: var(--pink-light);">
+                                        <i class="fas fa-fire"></i> ${meal.calories}
+                                    </div>
+                                </div>
+                                <p style="color: #b3b3b3; margin-top: 8px; font-size: 0.9rem;">${meal.description}</p>
+                                <div style="font-size: 0.85rem; color: var(--pink-light); margin-top: 8px;">
+                                    <i class="fas fa-star"></i> ${meal.nutrients}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--netflix-gray);">
+                        <h4 style="margin-bottom: 10px; color: var(--white);">
+                            <i class="fas fa-info-circle"></i> Plan Benefits
+                        </h4>
+                        <ul style="color: #b3b3b3; padding-left: 20px; line-height: 1.6;">
+                            ${getPlanBenefits(currentMealPlan.name).map(benefit => `
+                                <li>${benefit}</li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <button onclick="this.closest('.modal').style.display='none'" 
+                            style="margin-top: 25px; width: 100%; padding: 12px; background: var(--pink-accent); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                        <i class="fas fa-check"></i> Got it!
+                    </button>
+                </div>
+            `;
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.display = 'block';
+            modal.innerHTML = `
+                <div class="modal-content" style="max-width: 600px;">
+                    <div class="modal-header">
+                        <h2>Meal Plan Details</h2>
+                        <button class="close-modal" onclick="this.closest('.modal').style.display='none'">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        ${modalContent}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+
+        // Get plan benefits based on plan type
+        function getPlanBenefits(planName) {
+            const benefits = {
+                'Mediterranean': [
+                    'Promotes heart health and longevity',
+                    'Rich in antioxidants and anti-inflammatory compounds',
+                    'Supports healthy weight management',
+                    'Improves brain function and mood'
+                ],
+                'High-Protein': [
+                    'Supports muscle growth and recovery',
+                    'Increases satiety and reduces cravings',
+                    'Boosts metabolism and fat burning',
+                    'Helps maintain lean muscle mass'
+                ],
+                'Vegetarian': [
+                    'Rich in fiber and essential nutrients',
+                    'Supports digestive health',
+                    'May reduce risk of chronic diseases',
+                    'Environmentally sustainable choice'
+                ],
+                'Balanced': [
+                    'Provides all essential nutrients',
+                    'Sustainable long-term eating pattern',
+                    'Flexible and adaptable to preferences',
+                    'Supports overall health and energy'
+                ]
+            };
+            
+            return benefits[planName] || [
+                'Supports overall wellness',
+                'Provides balanced nutrition',
+                'Easy to follow and sustainable'
+            ];
         }
 
         // Setup event listeners
@@ -3030,6 +3695,11 @@
                 link.addEventListener('click', closeMobileMenu);
             });
             
+            // View plan details button
+            document.getElementById('view-plan-details').addEventListener('click', () => {
+                showPlanDetails();
+            });
+            
             // Handle window resize
             window.addEventListener('resize', () => {
                 isMobile = window.innerWidth <= 768;
@@ -3070,6 +3740,49 @@
                     }
                 }
             }
+            
+            // Check for new day every minute (for demo purposes)
+            setInterval(() => {
+                const today = new Date().toDateString();
+                if (lastResetDate !== today) {
+                    checkAndResetDailyData();
+                    renderNutritionCarousel();
+                    renderWorkoutCarousel();
+                    renderWaterGlasses();
+                    updateDashboardStats();
+                    showToast("New day! Today's meal plan is ready! 🌟", 'success');
+                }
+            }, 60000); // Check every minute
+            
+            // Manual reset button for testing
+            const manualResetBtn = document.createElement('button');
+            manualResetBtn.innerHTML = '<i class="fas fa-sync"></i> Simulate New Day';
+            manualResetBtn.style.cssText = `
+                position: fixed;
+                bottom: 80px;
+                right: 20px;
+                background: var(--pink-accent);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 8px;
+                cursor: pointer;
+                z-index: 1000;
+                font-size: 0.8rem;
+                display: none; /* Hidden by default, change to 'block' for testing */
+            `;
+            manualResetBtn.addEventListener('click', () => {
+                if (confirm("Simulate a new day? This will reset all checkboxes.")) {
+                    lastResetDate = null;
+                    checkAndResetDailyData();
+                    renderNutritionCarousel();
+                    renderWorkoutCarousel();
+                    renderWaterGlasses();
+                    updateDashboardStats();
+                    showToast('New day simulated! All checkboxes reset.', 'info');
+                }
+            });
+            document.body.appendChild(manualResetBtn);
             
             // Add keyboard navigation support
             document.addEventListener('keydown', (e) => {
